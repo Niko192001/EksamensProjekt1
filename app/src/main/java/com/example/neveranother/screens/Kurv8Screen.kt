@@ -120,3 +120,14 @@ fun OrderConfirmedScreen() {
         )
     }
 }
+
+/*
+OrderConfirmedScreen bygger hele “Ordre bekræftet”-siden op.
+Den starter med en Box, som giver baggrund og placerer bundmenuen.
+Indeni ligger en Column, der viser titel, progress‑indikator, checkmark‑ikon og tak‑besked i en lodret struktur.
+En Row med fire ProgressStep‑komponenter viser, at alle ordretrin er fuldført.
+Den store burgundy cirkel med “✓” giver en visuel bekræftelse på ordren.
+En hvid opsummeringsboks viser ordrenummer, dato og levering.
+Til sidst ligger to knapper: “Se min ordre” og “Fortsæt til shop”.
+BottomNavigationBar placeres nederst, så navigationen altid er synlig.
+ */
