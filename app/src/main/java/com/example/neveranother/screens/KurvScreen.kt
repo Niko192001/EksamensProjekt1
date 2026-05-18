@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CalendarToday
 import androidx.compose.material.icons.outlined.Home
@@ -38,26 +40,39 @@ val BackgroundColor = Color(0xFFFAF5F2)
 // Mørkerød farve fra jeres design
 val Burgundy = Color(0xFF6A2128)
 
-// Lys cirkelfarve til valgt ikon i bundmenuen
+// Lys cirkelfarve til den aktive side i bundmenuen
 val LightCircle = Color(0xFFEFDFD5)
 
 @Composable
 fun KurvScreen() {
 
+    // Box bruges som den store container for hele siden.
+    // Den gør det nemt at placere indhold, knap og bundnavigation oven på hinanden.
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundColor)
     ) {
 
+        // Denne Column indeholder alt det indhold, som skal kunne scrolles.
         Column(
             modifier = Modifier
                 .fillMaxSize()
+
+                // Denne linje gør siden scrollbar.
+                .verticalScroll(rememberScrollState())
+
+                // Luft fra venstre og højre side
                 .padding(horizontal = 24.dp)
+
+                // Luft fra toppen
                 .padding(top = 32.dp)
-                .padding(bottom = 150.dp)
+
+                // Ekstra luft nederst, så indhold ikke ligger bag knap og bundnavigation
+                .padding(bottom = 170.dp)
         ) {
 
+            // Titel øverst på siden
             Text(
                 text = "KURV",
                 fontSize = 14.sp,
@@ -66,10 +81,13 @@ fun KurvScreen() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Første step: Dine oplysninger
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
+
+                // Mørkerød cirkel med tallet 1
                 Box(
                     modifier = Modifier
                         .size(22.dp)
@@ -94,63 +112,40 @@ fun KurvScreen() {
 
             Spacer(modifier = Modifier.height(20.dp))
 
+            // Progress-linje med 4 punkter
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 72.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+
+                // Første punkt er aktivt
                 Box(
                     modifier = Modifier
                         .size(8.dp)
                         .background(Burgundy, CircleShape)
                 )
 
-                Box(
-                    modifier = Modifier
-                        .height(1.dp)
-                        .weight(1f)
-                        .background(Burgundy)
-                )
+                ProgressLine()
 
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(BackgroundColor, CircleShape)
-                        .border(1.dp, Burgundy, CircleShape)
-                )
+                // Punkt 2
+                EmptyProgressDot()
 
-                Box(
-                    modifier = Modifier
-                        .height(1.dp)
-                        .weight(1f)
-                        .background(Burgundy)
-                )
+                ProgressLine()
 
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(BackgroundColor, CircleShape)
-                        .border(1.dp, Burgundy, CircleShape)
-                )
+                // Punkt 3
+                EmptyProgressDot()
 
-                Box(
-                    modifier = Modifier
-                        .height(1.dp)
-                        .weight(1f)
-                        .background(Burgundy)
-                )
+                ProgressLine()
 
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(BackgroundColor, CircleShape)
-                        .border(1.dp, Burgundy, CircleShape)
-                )
+                // Punkt 4
+                EmptyProgressDot()
             }
 
             Spacer(modifier = Modifier.height(28.dp))
 
+            // Inputfelter
             InputField(
                 label = "Fornavn",
                 value = "Emma"
@@ -170,7 +165,7 @@ fun KurvScreen() {
                 value = "emma.andersen@hotmail.com"
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             InputField(
                 label = "Telefonnummer",
@@ -184,9 +179,49 @@ fun KurvScreen() {
                 value = "12/05-2000",
                 showCalendarIcon = true
             )
+
+            // Her laver vi ekstra indhold, så du kan teste scroll.
+            // Senere kan vi erstatte dette med Levering, Pakkeshop, Adresse osv.
+            Spacer(modifier = Modifier.height(40.dp))
+
+            Text(
+                text = "Levering",
+                fontSize = 20.sp,
+                color = Color.Black,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            InputField(
+                label = "Adresse",
+                value = "Svanemøllevej 42 3.th"
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            InputField(
+                label = "Postnummer",
+                value = "2100"
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            InputField(
+                label = "By",
+                value = "København Ø"
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            InputField(
+                label = "Land",
+                value = "Danmark"
+            )
         }
 
-        // Fortsæt-knappen ligger over bundmenuen
+        // Fortsæt-knappen ligger fast nederst.
+        // Den scroller ikke med siden.
         Button(
             onClick = {
                 // Her kan vi senere skrive navigation til næste side
@@ -209,14 +244,15 @@ fun KurvScreen() {
             )
         }
 
-        // Bundnavigation nederst på skærmen
+        // Bundnavigation ligger fast nederst.
         BottomNavigationBar(
             modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
 }
 
-// Denne funktion laver ét inputfelt
+// Denne funktion laver ét inputfelt.
+// Vi genbruger den, så vi ikke skal skrive samme design igen og igen.
 @Composable
 fun InputField(
     label: String,
@@ -225,6 +261,7 @@ fun InputField(
 ) {
     Column {
 
+        // Label over inputfeltet
         Text(
             text = label,
             fontSize = 14.sp,
@@ -233,6 +270,7 @@ fun InputField(
 
         Spacer(modifier = Modifier.height(7.dp))
 
+        // Selve inputboksen
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -254,6 +292,7 @@ fun InputField(
                 color = Color.Black
             )
 
+            // Kalenderikon vises kun på fødselsdato-feltet
             if (showCalendarIcon) {
                 Icon(
                     imageVector = Icons.Outlined.CalendarToday,
@@ -268,7 +307,29 @@ fun InputField(
     }
 }
 
-// Denne funktion laver bundnavigationen
+// Lille linje mellem progress-punkterne
+@Composable
+fun ProgressLine() {
+    Box(
+        modifier = Modifier
+            .height(1.dp)
+            .width(45.dp)
+            .background(Burgundy)
+    )
+}
+
+// Tom progress-prik
+@Composable
+fun EmptyProgressDot() {
+    Box(
+        modifier = Modifier
+            .size(8.dp)
+            .background(BackgroundColor, CircleShape)
+            .border(1.dp, Burgundy, CircleShape)
+    )
+}
+
+// Bundnavigationen nederst
 @Composable
 fun BottomNavigationBar(
     modifier: Modifier = Modifier
@@ -291,7 +352,7 @@ fun BottomNavigationBar(
         )
 
         // Midlertidigt bruger vi Home-ikon til Fit.
-        // Senere kan vi skifte det til jeres eget målebåndsikon.
+        // Senere kan vi skifte det ud med jeres eget målebåndsikon.
         Icon(
             imageVector = Icons.Outlined.Home,
             contentDescription = "Fit",
@@ -299,7 +360,7 @@ fun BottomNavigationBar(
             tint = Color.Black
         )
 
-        // Kurv er den aktive side, derfor får den en lys cirkel bag sig
+        // Kurv er aktiv side, derfor får den en lys cirkel bag sig
         Box(
             modifier = Modifier
                 .size(42.dp)
