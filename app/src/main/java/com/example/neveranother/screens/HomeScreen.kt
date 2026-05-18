@@ -21,8 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.neveranother.R
 
@@ -32,13 +34,19 @@ fun HomeScreen(
     onCreateBraClick: () -> Unit
 ) {
     Column(
+
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        Text(
+            text = "NEVER ANOTHER",
+            fontSize = 28.sp,
+            color = Color.Black,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
         //Header
         Text(
             text = "Din krop er unik. \n Skal din BH ikke også være det?",
