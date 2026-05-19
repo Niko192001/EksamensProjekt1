@@ -1,5 +1,4 @@
 package com.example.neveranother.screens
-
 import android.accessibilityservice.GestureDescription
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,14 +11,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,14 +39,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.neveranother.ui.theme.NeverAnotherTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Fitscreen(
-    onManuelClick: () -> Unit,
-    on3dClick: () -> Unit
-){
+fun Fitscreen(){
     Scaffold(
         topBar = {
             TopAppBar(
@@ -58,7 +51,6 @@ fun Fitscreen(
                     IconButton(onClick = {}) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "tilbage")
                     }
-
 
 
                 }
@@ -85,16 +77,16 @@ fun Fitscreen(
             OptionCard(
                 title = "Skriv dine mål ind",
                 description = "Indtast dine mål manuelt, så vi kan finde den bedste pasform til dig.",
-                onClick = onManuelClick
+                onClick = {}
             )
             Spacer(modifier = Modifier.height(16.dp))
             OptionCard(
                 title = "Scan din krop",
                 description = "Brug vores scanning til at få dine mål præcist og hurtigt.",
-                onClick = on3dClick
+                onClick = {}
             )
         } }
-}
+    }
 
 @Composable
 fun OptionCard(title: String, description: String, onClick: () -> Unit) {
@@ -111,16 +103,5 @@ fun OptionCard(title: String, description: String, onClick: () -> Unit) {
                 Text(description, fontSize = 13.sp)
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun FitscreenPreview() {
-    NeverAnotherTheme {
-        Fitscreen(
-            onManuelClick = {},
-            on3dClick = {}
-        )
     }
 }
