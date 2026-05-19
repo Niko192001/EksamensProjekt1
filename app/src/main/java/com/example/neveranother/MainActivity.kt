@@ -12,15 +12,12 @@ import com.example.neveranother.ui.theme.NeverAnotherTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // viewmodel
         setContent {
             NeverAnotherTheme {
-                val navController = rememberNavController()
-
                 Surface {
-                    AppNavGraph(navController = navController)
+                    AppNavGraph()
                 }
-
             }
 
 

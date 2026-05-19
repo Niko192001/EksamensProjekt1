@@ -4,10 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.neveranother.screens.*
 
 @Composable
-fun AppNavGraph(navController: NavHostController){
+fun AppNavGraph(){
+    val navController = rememberNavController()
 
     NavHost(
         navController = navController,
@@ -17,7 +19,7 @@ fun AppNavGraph(navController: NavHostController){
         composable("home"){
             HomeScreen(
                 onReadMoreClick = {},
-                onCreateBraClick = {},
+                onCreateBraClick = {navController.navigate("home2")},
             ) }
         composable("home2"){
             ChooseBraScreen(
