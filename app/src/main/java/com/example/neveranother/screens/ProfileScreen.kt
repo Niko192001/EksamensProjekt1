@@ -74,7 +74,7 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        
+
         // Ny Column så teksten bliver venstrejusteret
         Column(
             modifier = Modifier.fillMaxWidth()

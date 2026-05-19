@@ -1,27 +1,41 @@
 package com.example.neveranother.navigation
 
-/**
- * composable("fitMeasurements") {
- *     Fit4MeasurementsScreen(
- *         upper = 92,
- *         lower = 78,
- *         span = 21,
- *         height = 27,
- *         onContinue = { navController.navigate("cart") }
- *     )
- * }
- */
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.layout.ApproachLayoutModifierNode
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.example.neveranother.screens.*
 
-/*
-composable("orderStatus") {
-    OrderStatusScreen()
-}
- */
+@Composable
+fun AppNavGraph(navController: NavHostController){
 
-/*
-composable("orderConfirmed") {
-    OrderConfirmedScreen()
+    NavHost(
+        navController = navController,
+        startDestination = "home"
+    ){
+        //Home
+        composable("home"){HomeScreen() }
+        composable("home2"){ChooseBraScreen() }
+
+        //Fit
+        composable("Fit"){FitScreen()}
+        composable("Fit2"){FitVideoGuideScreen()}
+        composable("Fit3"){Fit3ScanScreen()}
+
+        //Kurv / Checkout
+        composable("Kurv"){KurvScreen()}
+        composable("Kurv3"){PaymentScreen()}
+        composable("Kurv8"){OrderConfirmedScreen()}
+
+        //Profil
+        composable("profile"){ProfileScreen()}
+        composable("profile2"){MeasurementsScreen()}
+        composable("profile3"){OrderStatusScreen()}
+
+    }
+
 }
- */
 
 

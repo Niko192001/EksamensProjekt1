@@ -20,7 +20,7 @@ import com.example.neveranother.components.PaymentOption
 import com.example.neveranother.components.SummaryRow
 
 @Composable
-fun PaymentScreen(){
+fun PaymentScreen() {
 
     var selectedMethod by remember { mutableStateOf("MobilePay") }
 
@@ -28,7 +28,7 @@ fun PaymentScreen(){
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundColor)
-    ){
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -58,25 +58,25 @@ fun PaymentScreen(){
             PaymentOption(
                 title = "MobilePay",
                 isSelected = selectedMethod == "MobilePay",
-                onClick = {selectedMethod = "MobilePay"}
+                onClick = { selectedMethod = "MobilePay" }
             )
 
             PaymentOption(
                 title = "Dankort/Visa",
                 isSelected = selectedMethod == "Visa",
-                onClick = {selectedMethod = "Visa"}
+                onClick = { selectedMethod = "Visa" }
             )
 
             PaymentOption(
                 title = "Klarna",
                 isSelected = selectedMethod == "Klarna",
-                onClick = {selectedMethod = "Klarna"}
+                onClick = { selectedMethod = "Klarna" }
             )
 
             PaymentOption(
                 title = "Apple Pay",
                 isSelected = selectedMethod == "ApplePay",
-                onClick = {selectedMethod = "ApplePay"}
+                onClick = { selectedMethod = "ApplePay" }
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -86,7 +86,7 @@ fun PaymentScreen(){
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White, RoundedCornerShape(12.dp))
-                    .border(1.dp,Color.LightGray, RoundedCornerShape(12.dp))
+                    .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp))
                     .padding(20.dp)
             ) {
                 SummaryRow("The Everday Bra", "799 Kr")
@@ -104,8 +104,8 @@ fun PaymentScreen(){
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
-            ){
-                Text(text = "Betal Nu", fontSize = 18.sp, color= Color.White)
+            ) {
+                Text(text = "Betal Nu", fontSize = 18.sp, color = Color.White)
             }
         }
         BottomNavigationBar(
