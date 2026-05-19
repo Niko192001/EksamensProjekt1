@@ -14,23 +14,49 @@ fun AppNavGraph(navController: NavHostController){
         startDestination = "home"
     ){
         //Home
-        composable("home"){HomeScreen() }
-        composable("home2"){ChooseBraScreen() }
+        composable("home"){
+            HomeScreen(
+                onReadMoreClick = {},
+                onCreateBraClick = {},
+            ) }
+        composable("home2"){
+            ChooseBraScreen(
+                onBraSelected = {},
+            ) }
 
         //Fit
-        composable("Fit"){FitScreen()}
-        composable("Fit2"){FitVideoGuideScreen()}
-        composable("Fit3"){Fit3ScanScreen()}
+        composable("Fit"){Fitscreen()}
+        composable("Fit2"){
+            FitVideoGuideScreen(
+                onUpperClick = {},
+                onLowerClick = {},
+                onSpanClick = {},
+                onHeightClick = {},
+                onContinueClick = {},
+            ) }
+        composable("Fit3"){
+            Fit3ScanScreen(
+                onStartScan = {},
+            ) }
 
         //Kurv / Checkout
-        composable("Kurv"){KurvScreen()}
-        composable("Kurv3"){PaymentScreen()}
-        composable("Kurv8"){OrderConfirmedScreen()}
+        composable("Kurv"){KurvScreen() }
+        composable("Kurv3"){PaymentScreen() }
+        composable("Kurv8"){OrderConfirmedScreen() }
 
         //Profil
-        composable("profile"){ProfileScreen()}
-        composable("profile2"){MeasurementsScreen()}
-        composable("profile3"){OrderStatusScreen()}
+        composable("profile"){
+            ProfileScreen(
+                onMeasurementsClick = {},
+                onOrderStatusClick = {},
+                onSettingsClick = {},
+            ) }
+        composable("profile2"){
+            ProfileScreen2(
+                onBackClick = {},
+                onStartScan = {},
+            ) }
+        composable("profile3"){OrderStatusScreen() }
 
     }
 
