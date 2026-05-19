@@ -74,7 +74,7 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        
+
         // Ny Column så teksten bliver venstrejusteret
         Column(
             modifier = Modifier.fillMaxWidth()
@@ -131,7 +131,7 @@ fun ProfileScreen(
 
                 // Farver på knappen
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFEBD8CF),
+                    containerColor = Color(0xFFEFDFD5),
                     contentColor = Color(0xFF7A1F2B)
                 )
 
