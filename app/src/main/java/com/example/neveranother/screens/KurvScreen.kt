@@ -34,10 +34,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Baggrundsfarven fra jeres design
+// Baggrundsfarven
 val BackgroundColor = Color(0xFFFAF5F2)
 
-// Mørkerød farve fra jeres design
+// Mørkerød farve
 val Burgundy = Color(0xFF6A2128)
 
 // Lys cirkelfarve til den aktive side i bundmenuen
