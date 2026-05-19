@@ -1,13 +1,13 @@
 package com.example.neveranother.screens
 
-import android.R.attr.onClick
+import android.R.attr.icon
+import android.R.attr.text
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.indication
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -15,79 +15,73 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalProvider
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.neveranother.R
-import com.example.neveranother.components.VideoGuideRow
+import com.example.neveranother.components.ScanInfoRow
+import kotlin.coroutines.coroutineContext
 
 @Composable
-fun FitVideoGuideScreen(
-    onUpperClick: () -> Unit,
-    onLowerClick: () -> Unit,
-    onSpanClick: () -> Unit,
-    onHeightClick: () -> Unit,
-    onContinueClick: () -> Unit
+fun Fit3ScanScreen(
+    onStartScan: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Titel
         Text(
-            text = "Video Guide",
+            text = "Scan din krop",
             style = MaterialTheme.typography.headlineMedium
         )
         Spacer(modifier = Modifier.height(8.dp))
 
+        //Undertekst
         Text(
-            text = "Se hvordan måler selv korrekt",
+            text = "Få dine mål mål præcist og hurtigt med 3D scanning",
             style = MaterialTheme.typography.bodyMedium
         )
         Spacer(modifier = Modifier.height(24.dp))
 
-        VideoGuideRow(
-            title = "Upper Circumference",
-            thumbnailRes = R.drawable.thumb_upper,
-            onClick = onUpperClick
+        //info ikoner
+        ScanInfoRow(
+            icon = R.drawable.ic_scan360,
+            text = "360 scanning på få sekunder"
         )
         Spacer(modifier = Modifier.height(12.dp))
 
-        VideoGuideRow(
-            title = "Lower Circumference",
-            thumbnailRes = R.drawable.thumb_lower,
-            onClick = onLowerClick
+        ScanInfoRow(
+            icon = R.drawable.ic_accuracy,
+            text = "Præcise mål op til 97%"
         )
         Spacer(modifier = Modifier.height(12.dp))
 
-        VideoGuideRow(
-            title = "Breast Span",
-            thumbnailRes = R.drawable.thumb_span,
-            onClick = onSpanClick
+        ScanInfoRow(
+            icon = R.drawable.ic_privacy,
+            text = "Dine billeder gemmes ikke"
         )
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
-        VideoGuideRow(
-            title = "Breast height",
-            thumbnailRes = R.drawable.thumb_height,
-            onClick = onHeightClick
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
+        // Start scan knap
         Button(
-            onClick = onContinueClick,
+            onClick = onStartScan,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(52.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF6A1B1A), // Den mørkerøde farve til vores knap
+                containerColor = Color(0xFF6A1B1A),
                 contentColor = Color.White
             )
         ) {
-            Text(text = "FORTSÆT")
+            Text(
+                text = "START SCAN"
+            )
         }
         Spacer(modifier = Modifier.height(16.dp))
     }
