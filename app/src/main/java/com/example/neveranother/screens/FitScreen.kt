@@ -92,7 +92,7 @@ fun FitScreen(
             )
             Spacer(modifier = Modifier.height(24.dp))
             Text("Hvordan vil du oplyse dine mål?", fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.height(150.dp))
+            Spacer(modifier = Modifier.height(70.dp))
 
             OptionCard(
 

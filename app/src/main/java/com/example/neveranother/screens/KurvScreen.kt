@@ -1,5 +1,6 @@
 package com.example.neveranother.screens
 
+import com.example.neveranother.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -354,7 +356,7 @@ fun BottomNavigationBar(
         // Midlertidigt bruger vi Home-ikon til Fit.
         // Senere kan vi skifte det ud med jeres eget målebåndsikon.
         Icon(
-            imageVector = Icons.Outlined.Home,
+            painter = painterResource(id = R.drawable.kropmaal),
             contentDescription = "Fit",
             modifier = Modifier.size(30.dp),
             tint = Color.Black
