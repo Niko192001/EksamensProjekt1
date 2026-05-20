@@ -31,9 +31,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.neveranother.R
 
 // Baggrundsfarven
 val BackgroundColor = Color(0xFFFAF5F2)
@@ -345,17 +347,18 @@ fun BottomNavigationBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        Icon(
-            imageVector = Icons.Outlined.Home,
-            contentDescription = "Hjem",
-            modifier = Modifier.size(30.dp),
-            tint = Color.Black
-        )
+
 
         // Midlertidigt bruger vi Home-ikon til Fit.
         // Senere kan vi skifte det ud med vores eget målebåndsikon.
         Icon(
             imageVector = Icons.Outlined.Home,
+            contentDescription = "Fit",
+            modifier = Modifier.size(30.dp),
+            tint = Color.Black
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.fit_ikon),
             contentDescription = "Fit",
             modifier = Modifier.size(30.dp),
             tint = Color.Black

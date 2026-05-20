@@ -29,7 +29,7 @@ fun AppNavGraph(){
 
         //Fit
         composable("Fit"){
-            Fitscreen(
+            FitScreen(
                 onManuelClick = {navController.navigate("Fit2")},
                 on3dClick = {navController.navigate("Fit3")},
             )
