@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.neveranother.components.BraProductCard
 import com.example.neveranother.ui.theme.NeverAnotherTheme
 
@@ -98,3 +99,11 @@ fun ChooseBraScreen(
 9. Produktkortene viser titel, beskrivelse, pris og billede, så brugeren får et klart visuelt valg.
 10. Nederst er der en forklarende tekst, der guider brugeren videre i flowet og sætter forventninger til næste trin.
  */
+
+@Preview(showBackground = true)
+@Composable
+fun ChooseBraScreenPreview() {
+    NeverAnotherTheme {
+        ChooseBraScreen(onBraSelected = {})
+    }
+}
