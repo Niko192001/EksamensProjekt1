@@ -20,7 +20,9 @@ import com.example.neveranother.components.PaymentOption
 import com.example.neveranother.components.SummaryRow
 
 @Composable
-fun PaymentScreen() {
+fun PaymentScreen(
+    onContinue: () -> Unit
+) {
 
     var selectedMethod by remember { mutableStateOf("MobilePay") }
 

@@ -1,5 +1,6 @@
 package com.example.neveranother.screens
 
+import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -15,11 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.neveranother.ui.theme.NeverAnotherTheme
 import com.example.neveranother.components.ProgressStep
 import com.example.neveranother.components.SummaryRow
-import com.example.neveranother.screens.Burgundy
-import com.example.neveranother.screens.BackgroundColor
-import com.example.neveranother.screens.BottomNavigationBar
 
 @Composable
 fun OrderConfirmedScreen() {
@@ -78,6 +78,7 @@ fun OrderConfirmedScreen() {
                 )
             }
 
+
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
@@ -115,16 +116,25 @@ fun OrderConfirmedScreen() {
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .border(1.dp, Burgundy, RoundedCornerShape(12.dp))
+                    .width(200.dp)
+                    .height(44.dp)
+                    .border(1.dp, color = Burgundy, RoundedCornerShape(12.dp))
+                    .align(Alignment.CenterHorizontally)
             ) {
-                Text(text = "Fortsæt til shop", fontSize = 18.sp, color = Burgundy)
+                Text(text = "Fortsæt til shop", fontSize = 16.sp, color = Burgundy)
             }
         }
         BottomNavigationBar(
             modifier = Modifier.align(Alignment.BottomCenter)
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OrderConfirmedScreenPreview() {
+    NeverAnotherTheme {
+        OrderConfirmedScreen()
     }
 }
 

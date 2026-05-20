@@ -1,11 +1,12 @@
 package com.example.neveranother.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.neveranother.screens.*
+import com.example.neveranother.ui.theme.NeverAnotherTheme
 
 @Composable
 fun AppNavGraph(){
@@ -66,25 +67,36 @@ fun AppNavGraph(){
                 showCalendarIcon = false
             )}
 
-        composable("Kurv3"){PaymentScreen() }
+        composable("Kurv3"){
+            PaymentScreen(
+                onContinue = {navController.navigate("Kurv8")}
+            ) }
         composable("Kurv8"){OrderConfirmedScreen() }
 
         //Profil
         composable("profile"){
             ProfileScreen(
                 onMeasurementsClick = {},
-                onOrderStatusClick = {},
+                onOrderStatusClick = {navController.navigate("profile3")},
                 onSettingsClick = {},
             ) }
         composable("profile2"){
             Profile2Screen(
-                onBackClick = {},
+                onBackClick = {navController.navigate("profile")},
                 onStartScan = {},
             ) }
         composable("profile3"){OrderStatusScreen() }
 
     }
 
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AppNavGraphPreview() {
+    NeverAnotherTheme {
+        AppNavGraph()
+    }
 }
 
 
