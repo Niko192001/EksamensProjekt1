@@ -43,7 +43,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Fitscreen(){
+fun Fitscreen(
+    onManuelClick: () -> Unit,
+    on3dClick: () -> Unit
+){
     Scaffold(
         topBar = {
             TopAppBar(

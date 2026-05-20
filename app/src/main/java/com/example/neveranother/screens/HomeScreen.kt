@@ -76,7 +76,10 @@ fun HomeScreen(
         //Knapper
         Button(
             onClick = onReadMoreClick,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF6A1B1A) // Mørk rød farve som vores prototype
+            )
         ) {
             Text("LÆS MERE")
         }

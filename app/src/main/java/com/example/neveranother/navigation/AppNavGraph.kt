@@ -23,26 +23,49 @@ fun AppNavGraph(){
             ) }
         composable("home2"){
             ChooseBraScreen(
-                onBraSelected = {},
+                onBraSelected = {navController.navigate("Fit")},
             ) }
 
         //Fit
-        composable("Fit"){Fitscreen()}
+        composable("Fit"){
+            Fitscreen(
+                onManuelClick = {navController.navigate("Fit2")},
+                on3dClick = {navController.navigate("Fit3")},
+            )
+        }
         composable("Fit2"){
             FitVideoGuideScreen(
                 onUpperClick = {},
                 onLowerClick = {},
                 onSpanClick = {},
                 onHeightClick = {},
-                onContinueClick = {},
+                onContinueClick = {navController.navigate("Fit4")},
             ) }
         composable("Fit3"){
             Fit3ScanScreen(
                 onStartScan = {},
+
             ) }
 
+        composable("Fit4"){
+            Fit4MeasurementsScreen(
+                upper = 0,
+                lower = 0,
+                span = 0,
+                height = 0,
+                onContinue = {navController.navigate("KurvScreen")}
+            )}
+
+
         //Kurv / Checkout
-        composable("Kurv"){KurvScreen() }
+        composable("Kurv") {KurvScreen()}
+        composable("Kurv"){
+            InputField(
+                label = "",
+                value = "",
+                showCalendarIcon = false
+            )}
+
         composable("Kurv3"){PaymentScreen() }
         composable("Kurv8"){OrderConfirmedScreen() }
 
@@ -54,7 +77,7 @@ fun AppNavGraph(){
                 onSettingsClick = {},
             ) }
         composable("profile2"){
-            ProfileScreen2(
+            Profile2Screen(
                 onBackClick = {},
                 onStartScan = {},
             ) }
