@@ -61,23 +61,22 @@ fun OrderConfirmedScreen() {
 
             Box(
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(100.dp)
                     .background(
                         Color(0xFF6A1B1A),
                         CircleShape
-                    ),
+                    )
+                    .align(Alignment.CenterHorizontally),
 
                 contentAlignment = Alignment.Center
             ) {
 
                 Text(
                     text = "✓",
-                    fontSize = 52.sp,
+                    fontSize = 42.sp,
                     color = Color.White
                 )
             }
-
-
 
             Spacer(modifier = Modifier.height(24.dp))
 
