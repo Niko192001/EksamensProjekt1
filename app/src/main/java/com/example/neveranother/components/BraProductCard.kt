@@ -29,7 +29,7 @@ fun BraProductCard(
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.Start
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Image(
@@ -38,7 +38,7 @@ fun BraProductCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(180.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Fit
             )
 
             Spacer(modifier = Modifier.height(8.dp))
