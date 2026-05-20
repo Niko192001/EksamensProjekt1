@@ -71,7 +71,8 @@ fun KurvScreen() {
                 // Luft fra toppen
                 .padding(top = 32.dp)
 
-                // Ekstra luft nederst, så indhold ikke ligger bag knap og bundnavigation
+                // Der tilføjes ekstra padding nederst,
+                // så de nederste inputfelter ikke bliver dækket af Fortsæt-knappen og bundnavigationen.
                 .padding(bottom = 170.dp)
         ) {
 
@@ -325,7 +326,8 @@ fun ProgressLine() {
     )
 }
 
-// Tom progress-prik
+// EmptyProgressDot laver en tom cirkel i progress-indikatoren.
+// Den viser de trin, brugeren endnu ikke er nået til.
 @Composable
 fun EmptyProgressDot() {
     Box(
@@ -336,7 +338,8 @@ fun EmptyProgressDot() {
     )
 }
 
-// Bundnavigationen nederst
+// BottomNavigationBar laver navigationen nederst i appen.
+// Den giver brugeren mulighed for at skifte mellem appens centrale sider.
 @Composable
 fun BottomNavigationBar(
     modifier: Modifier = Modifier
