@@ -36,8 +36,8 @@ fun BraProductCard(
                 painter = painterResource(id = imageRes),
                 contentDescription = title,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp),
+                    .size(140.dp)
+                    .align(Alignment.CenterHorizontally),
                 contentScale = ContentScale.Fit
             )
 
