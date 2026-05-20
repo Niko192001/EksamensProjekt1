@@ -3,6 +3,7 @@ package com.example.neveranother.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -63,9 +64,13 @@ fun Profile2Screen(
         // Box bruges til at placere fluebenet i midten
         Box(
             modifier = Modifier
-                .size(60.dp)
-                // Transparent baggrund + cirkel form
-                .background(Color.Transparent, CircleShape),
+                .size(100.dp)
+                .border(
+                    width = 1.dp,
+                    color = Color(0xFF6A1B1A),
+                    shape = CircleShape
+                )
+                .align(Alignment.CenterHorizontally),
             contentAlignment = Alignment.Center
         ) {
             Text(
@@ -74,6 +79,8 @@ fun Profile2Screen(
                 color = Color(0xFF6A1B1A)
             )
         }
+
+
 
         Spacer(modifier = Modifier.height(30.dp))
 
