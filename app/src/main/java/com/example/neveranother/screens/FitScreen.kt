@@ -1,6 +1,7 @@
 package com.example.neveranother.screens
 
 import android.accessibilityservice.GestureDescription
+import android.widget.Button
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
@@ -50,7 +51,9 @@ import androidx.compose.ui.draw.shadow
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun FitScreen() {
+fun FitScreen(
+
+) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -64,13 +67,21 @@ fun FitScreen() {
 
                 }
             )
+        },
+        bottomBar = {
+            BottomNavigationBar(
+
+            )
         }
+
+
     ) { innerpadding ->
         Column(
+
             modifier = Modifier
                 .padding(innerpadding)
                 .padding(horizontal = 24.dp)
-                .fillMaxSize(),
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text("Find din perfekte pasform", fontSize = 22.sp, fontWeight = FontWeight.Bold)
@@ -99,8 +110,14 @@ fun FitScreen() {
                 imageRes = R.drawable.krop_ikon,
 
                 )
+
         }
+
+
     }
+
+
+
 }
 
 @Composable

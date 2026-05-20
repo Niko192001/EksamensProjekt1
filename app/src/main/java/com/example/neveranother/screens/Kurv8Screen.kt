@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,6 +22,7 @@ import com.example.neveranother.ui.theme.NeverAnotherTheme
 import com.example.neveranother.components.ProgressStep
 import com.example.neveranother.components.SummaryRow
 
+@Preview
 @Composable
 fun OrderConfirmedScreen() {
 

@@ -32,6 +32,7 @@ import androidx.navigation.NavHostController
 import com.example.neveranother.R
 import com.example.neveranother.ui.theme.NeverAnotherTheme
 
+
 @Composable
 fun HomeScreen(
     onReadMoreClick: () -> Unit,
