@@ -102,7 +102,7 @@ fun FitScreen(
 
                 title = "Skriv dine mål ind",
                 description = "Indtast dine mål manuelt, så vi kan finde den bedste pasform til dig.",
-                onClick = {},
+                onClick = onManuelClick,
                 imageRes = R.drawable.fit_ikon,
 
                 )
@@ -110,7 +110,7 @@ fun FitScreen(
             OptionCard(
                 title = "Scan din krop",
                 description = "Brug vores scanning til at få dine mål præcist og hurtigt.",
-                onClick = {},
+                onClick = on3dClick,
                 imageRes = R.drawable.krop_ikon,
 
                 )
