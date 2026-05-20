@@ -48,15 +48,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.draw.shadow
 
-@OptIn(ExperimentalMaterial3Api::class)
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FitScreen(
-
-onManuelClick: () -> Unit,
-on3dClick: () -> Unit,
-
+    onManuelClick: () -> Unit,
+    on3dClick: () -> Unit,
 ) {
+
+
+
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -160,4 +161,13 @@ fun OptionCard(title: String, description: String, imageRes: Int, onClick: () ->
             }
         }
     }
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+fun FitScreenPreview() {
+    FitScreen(
+        onManuelClick = {},
+        on3dClick = {}
+    )
 }
