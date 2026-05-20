@@ -60,17 +60,26 @@ fun OrderConfirmedScreen() {
             //Stor cirkel med checkmark
             Box(
                 modifier = Modifier
-                    .size(120.dp)
-                    .background(Burgundy, CircleShape)
+                    .size(100.dp)
+                    .border(
+                        width = 1.dp,
+                        color = Color(0xFF6A1B1A),
+                        shape = CircleShape
+                    )
                     .align(Alignment.CenterHorizontally),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "✔️",
-                    fontSize = 60.sp,
-                    color = Color.White
+                    text = "✓",
+                    fontSize = 42.sp,
+                    color = Color(0xFFFDFDFD)
                 )
             }
+
+
+
+
+
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
