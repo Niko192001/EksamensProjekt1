@@ -115,7 +115,8 @@ fun KurvScreen() {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Progress-linje med 4 punkter
+            // Der laves en progress-indikator med prikker og linjer,
+            // så brugeren kan se, hvor langt de er i købsprocessen.
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -183,7 +184,7 @@ fun KurvScreen() {
                 showCalendarIcon = true
             )
 
-            // Her laver vi ekstra indhold, så du kan teste scroll.
+            // Her laver vi ekstra indhold, så vi kan teste scroll.
             // Senere kan vi erstatte dette med Levering, Pakkeshop, Adresse osv.
             Spacer(modifier = Modifier.height(40.dp))
 
@@ -254,8 +255,10 @@ fun KurvScreen() {
     }
 }
 
-// Denne funktion laver ét inputfelt.
-// Vi genbruger den, så vi ikke skal skrive samme design igen og igen.
+
+// Der laves en genbrugelig funktion, der hedder InputField.
+// Den gør, at vi ikke skal skrive det samme inputfelt igen og igen.
+// Vi kan bare kalde funktionen med forskellige labels og værdier.
 @Composable
 fun InputField(
     label: String,
@@ -310,7 +313,8 @@ fun InputField(
     }
 }
 
-// Lille linje mellem progress-punkterne
+// Der laves en progress-indikator med prikker og linjer,
+// så brugeren kan se, hvor langt de er i købsprocessen.
 @Composable
 fun ProgressLine() {
     Box(
@@ -349,14 +353,17 @@ fun BottomNavigationBar(
 
 
 
-        // Midlertidigt bruger vi Home-ikon til Fit.
-        // Senere kan vi skifte det ud med vores eget målebåndsikon.
+        // Vi bruger fit-ikon til Fit.
         Icon(
             imageVector = Icons.Outlined.Home,
             contentDescription = "Fit",
             modifier = Modifier.size(30.dp),
             tint = Color.Black
         )
+
+        // Der bruges painterResource til at hente et ikon fra drawable-mappen.
+        // Det bruger vi til Fit-ikonet.
+
         Icon(
             painter = painterResource(id = R.drawable.fit_ikon),
             contentDescription = "Fit",
@@ -386,12 +393,4 @@ fun BottomNavigationBar(
             tint = Color.Black
         )
     }
-}
-
-// Preview bruges kun i Android Studio til at se designet af KurvScreen,
-// uden at vi behøver at sætte skærmen ind i MainActivity endnu.
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun KurvScreenPreview() {
-    KurvScreen()
 }
