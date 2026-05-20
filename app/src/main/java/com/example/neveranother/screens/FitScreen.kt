@@ -85,13 +85,13 @@ fun Fitscreen(
             OptionCard(
                 title = "Skriv dine mål ind",
                 description = "Indtast dine mål manuelt, så vi kan finde den bedste pasform til dig.",
-                onClick = {}
+                onClick = onManuelClick
             )
             Spacer(modifier = Modifier.height(16.dp))
             OptionCard(
                 title = "Scan din krop",
                 description = "Brug vores scanning til at få dine mål præcist og hurtigt.",
-                onClick = {}
+                onClick = on3dClick
             )
         } }
 }
