@@ -79,7 +79,6 @@ fun OrderConfirmedScreen() {
 
 
 
-
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(

@@ -81,7 +81,6 @@ fun Profile2Screen(
         }
 
 
-
         Spacer(modifier = Modifier.height(30.dp))
 
         // Overskrift

@@ -7,6 +7,7 @@ import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
 import com.example.neveranother.navigation.AppNavGraph
 import com.example.neveranother.screens.KurvScreen
+import com.example.neveranother.screens.Profile2Screen
 import com.example.neveranother.ui.theme.NeverAnotherTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,10 +18,9 @@ class MainActivity : ComponentActivity() {
             NeverAnotherTheme {
                 Surface {
                     AppNavGraph()
+
                 }
             }
-
-
         }
     }
 }

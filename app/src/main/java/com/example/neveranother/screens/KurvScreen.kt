@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.sp
 val BackgroundColor = Color(0xFFFAF5F2)
 
 // Mørkerød farve
-val Burgundy = Color(0xFF6A2128)
+val Burgundy = Color(0xFFF3F3F3)
 
 // Lys cirkelfarve til den aktive side i bundmenuen
 val LightCircle = Color(0xFFEFDFD5)
