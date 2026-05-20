@@ -90,7 +90,7 @@ fun ChooseBraScreen(
 1. ChooseBraScreen viser produktvalget, hvor brugeren vælger hvilken BH‑model og farve de vil gå videre med.
 2. Skærmen tager én parameter: onBraSelected, som kaldes med farven, når brugeren trykker på et produktkort.
 3. Layoutet er bygget som en Column, der scroller, så alt indhold kan ses på alle skærmstørrelser.
-4. Øverst vises “NEVER ANOTHER” som brand‑header for at skabe genkendelighed.
+4. Øverst vises NEVER ANOTHER som brand‑header for at skabe genkendelighed.
 5. Derefter kommer en titel og en kort beskrivelse, der forklarer formålet med skærmen.
 6. Der er god afstand mellem elementerne via Spacer, så layoutet føles luftigt og let at læse.
 7. Brugeren præsenteres for to BraProductCard‑komponenter, som viser hver sin farvevariant.
