@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.example.neveranother.R
 
 @Composable
-fun ProfileScreen2(
+fun Profile2Screen(
     onBackClick: () -> Unit,
     onStartScan: () -> Unit
 ) {
