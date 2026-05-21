@@ -86,7 +86,7 @@ fun HomeScreen(
             Button(
                 onClick = onReadMoreClick,
                 modifier = Modifier
-                    .width(130.dp)
+                    .width(180.dp)
                     .align(Alignment.Start),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF6A1B1A) // Mørk rød farve som vores prototype
@@ -100,14 +100,14 @@ fun HomeScreen(
             Button(
                 onClick = onCreateBraClick,
                 modifier = Modifier
-                    .width(130.dp)
+                    .width(180.dp)
                     .align(Alignment.Start),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF6A1B1A) //Mørk rød farve som vores wireframe
                 )
             )
             {
-                Text("LAV DIN BH")
+                Text("MÅL OP TIL DIN BH")
             }
             Spacer(modifier = Modifier.height(32.dp))
 
