@@ -74,7 +74,8 @@ fun KurvScreen(navController: NavController) {
                 // Luft fra toppen
                 .padding(top = 32.dp)
 
-                // Ekstra luft nederst, så indhold ikke ligger bag knap og bundnavigation
+                // Der tilføjes ekstra padding nederst,
+                // så de nederste inputfelter ikke bliver dækket af Fortsæt-knappen og bundnavigationen.
                 .padding(bottom = 170.dp)
         ) {
 
@@ -118,7 +119,8 @@ fun KurvScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Progress-linje med 4 punkter
+            // Der laves en progress-indikator med prikker og linjer,
+            // så brugeren kan se, hvor langt de er i købsprocessen.
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -186,7 +188,7 @@ fun KurvScreen(navController: NavController) {
                 showCalendarIcon = true
             )
 
-            // Her laver vi ekstra indhold, så du kan teste scroll.
+            // Her laver vi ekstra indhold, så vi kan teste scroll.
             // Senere kan vi erstatte dette med Levering, Pakkeshop, Adresse osv.
             Spacer(modifier = Modifier.height(40.dp))
 
@@ -263,8 +265,10 @@ fun KurvScreen(navController: NavController) {
 
 }
 
-// Denne funktion laver ét inputfelt.
-// Vi genbruger den, så vi ikke skal skrive samme design igen og igen.
+
+// Der laves en genbrugelig funktion, der hedder InputField.
+// Den gør, at vi ikke skal skrive det samme inputfelt igen og igen.
+// Vi kan bare kalde funktionen med forskellige labels og værdier.
 @Composable
 fun InputField(
     label: String,
@@ -319,7 +323,8 @@ fun InputField(
     }
 }
 
-// Lille linje mellem progress-punkterne
+// Der laves en progress-indikator med prikker og linjer,
+// så brugeren kan se, hvor langt de er i købsprocessen.
 @Composable
 fun ProgressLine() {
     Box(
@@ -330,7 +335,8 @@ fun ProgressLine() {
     )
 }
 
-// Tom progress-prik
+// EmptyProgressDot laver en tom cirkel i progress-indikatoren.
+// Den viser de trin, brugeren endnu ikke er nået til.
 @Composable
 fun EmptyProgressDot() {
     Box(
@@ -349,4 +355,63 @@ fun EmptyProgressDot() {
 @Composable
 fun KurvScreenPreview() {
     KurvScreen(navController = rememberNavController())
+}
+// BottomNavigationBar laver navigationen nederst i appen.
+// Den giver brugeren mulighed for at skifte mellem appens centrale sider.
+@Composable
+fun BottomNavigationBar(
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(55.dp)
+            .background(BackgroundColor)
+            .border(1.dp, Color.Black),
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+
+
+        // Vi bruger fit-ikon til Fit.
+        Icon(
+            imageVector = Icons.Outlined.Home,
+            contentDescription = "Fit",
+            modifier = Modifier.size(30.dp),
+            tint = Color.Black
+        )
+
+        // Der bruges painterResource til at hente et ikon fra drawable-mappen.
+        // Det bruger vi til Fit-ikonet.
+
+        Icon(
+            painter = painterResource(id = R.drawable.fit_ikon),
+            contentDescription = "Fit",
+            modifier = Modifier.size(30.dp),
+            tint = Color.Black
+        )
+
+        // Kurv er aktiv side, derfor får den en lys cirkel bag sig
+        Box(
+            modifier = Modifier
+                .size(42.dp)
+                .background(LightCircle, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.ShoppingCart,
+                contentDescription = "Kurv",
+                modifier = Modifier.size(29.dp),
+                tint = Color.Black
+            )
+        }
+
+        Icon(
+            imageVector = Icons.Outlined.Person,
+            contentDescription = "Profil",
+            modifier = Modifier.size(31.dp),
+            tint = Color.Black
+        )
+    }
 }

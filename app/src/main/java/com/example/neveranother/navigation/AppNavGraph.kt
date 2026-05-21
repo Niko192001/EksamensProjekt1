@@ -51,10 +51,10 @@ fun AppNavGraph(){
 
         composable("Fit4"){
             Fit4MeasurementsScreen(
-                upper = 0,
-                lower = 0,
-                span = 0,
-                height = 0,
+                upper = 90,
+                lower = 70,
+                span = 20,
+                height = 40,
                 onContinue = {navController.navigate("KurvScreen")}
             )}
 

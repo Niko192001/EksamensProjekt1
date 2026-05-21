@@ -116,6 +116,19 @@ fun HomeScreen(
     }
 }
 
+/*
+HomeScreen er en composable, der viser forsiden af appen og tager to callbacks: én til Læs mere og én til Lav din BH.
+2. Hele layoutet ligger i en Box, så vi kan placere bundmenuen fast nederst.
+3. Indholdet ligger i en Column, som scroller, så alt kan ses på små skærme.
+4. Øverst viser vi “NEVER ANOTHER” som brand‑header.
+5. Derefter kommer tre tekstsektioner, som introducerer konceptet og skaber en personlig tone.
+6. Under teksten vises et billede af en model, som fylder hele bredden og giver visuelt fokus.
+7. Efter billedet kommer to knapper, som er mindre og placeret til venstre for at matche designet.
+8. onReadMoreClick og onCreateBraClick styrer navigationen videre til næste skærme.
+9. Der er Spacer() mellem elementerne for at skabe luft og bedre læsbarhed.
+10. Nederst i Box ligger BottomNavigationBar, så navigationen altid er synlig uanset scroll.
+ */
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
@@ -126,3 +139,4 @@ fun HomeScreenPreview() {
         )
     }
 }
+
