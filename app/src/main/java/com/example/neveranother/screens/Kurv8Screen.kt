@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.neveranother.ui.theme.NeverAnotherTheme
 import com.example.neveranother.components.ProgressStep
 import com.example.neveranother.components.SummaryRow
+import com.example.neveranother.navigation.BottomNavigationBar
 
 @Composable
 fun OrderConfirmedScreen() {

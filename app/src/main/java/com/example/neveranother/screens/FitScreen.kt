@@ -47,6 +47,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.draw.shadow
+import com.example.neveranother.navigation.BottomNavigationBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,8 +58,9 @@ fun FitScreen(
 ) {
 
 
-
+// det er en måde at grupper det på ligesom at bruge fx box
     Scaffold(
+        // det er en måde at lave en bar i toppen og have ting i toppe fx som back kanp
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text("FIT") },
@@ -72,6 +74,7 @@ fun FitScreen(
                 }
             )
         },
+        // til at have ting i bunden som nav bar
         bottomBar = {
             BottomNavigationBar(
 
@@ -97,7 +100,7 @@ fun FitScreen(
             Spacer(modifier = Modifier.height(24.dp))
             Text("Hvordan vil du oplyse dine mål?", fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(70.dp))
-
+// de to bocxe
             OptionCard(
 
                 title = "Skriv dine mål ind",
@@ -123,7 +126,7 @@ fun FitScreen(
 
 
 }
-
+// her er functione  til de to boxe
 @Composable
 fun OptionCard(title: String, description: String, imageRes: Int, onClick: () -> Unit) {
     Card(
@@ -162,6 +165,7 @@ fun OptionCard(title: String, description: String, imageRes: Int, onClick: () ->
         }
     }
 }
+// det der gør vi ka se den i preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
