@@ -28,6 +28,7 @@ import kotlin.coroutines.coroutineContext
 fun Fit3ScanScreen(
     onStartScan: () -> Unit
 ) {
+    // gør at det er lodret
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,7 +56,7 @@ fun Fit3ScanScreen(
             text = "360 scanning på få sekunder"
         )
         Spacer(modifier = Modifier.height(12.dp))
-
+// Tre info-punkter med ikon + tekst
         ScanInfoRow(
             icon = R.drawable.ic_accuracy,
             text = "Præcise mål op til 97%"

@@ -1,8 +1,10 @@
 package com.example.neveranother.screens
-
+import com.example.neveranother.navigation.BottomNavigationBar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,8 +48,9 @@ val Burgundy = Color(0xFFF3F3F3)
 // Lys cirkelfarve til den aktive side i bundmenuen
 val LightCircle = Color(0xFFEFDFD5)
 
+
 @Composable
-fun KurvScreen() {
+fun KurvScreen(navController: NavController) {
 
     // Box bruges som den store container for hele siden.
     // Den gør det nemt at placere indhold, knap og bundnavigation oven på hinanden.
@@ -245,13 +248,19 @@ fun KurvScreen() {
                 fontSize = 22.sp,
                 color = Color.White
             )
+
         }
 
         // Bundnavigation ligger fast nederst.
         BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier.align(Alignment.BottomCenter),
+            onHomeClick    = { navController.navigate("home") },
+            onFitClick     = { navController.navigate("Fit") },
+            onCartClick    = { navController.navigate("Kurv") },
+            onProfileClick = { navController.navigate("profile") }
         )
     }
+
 }
 
 // Denne funktion laver ét inputfelt.
@@ -333,65 +342,11 @@ fun EmptyProgressDot() {
 }
 
 // Bundnavigationen nederst
-@Composable
-fun BottomNavigationBar(
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(55.dp)
-            .background(BackgroundColor)
-            .border(1.dp, Color.Black),
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-
-
-
-        // Midlertidigt bruger vi Home-ikon til Fit.
-        // Senere kan vi skifte det ud med vores eget målebåndsikon.
-        Icon(
-            imageVector = Icons.Outlined.Home,
-            contentDescription = "Fit",
-            modifier = Modifier.size(30.dp),
-            tint = Color.Black
-        )
-        Icon(
-            painter = painterResource(id = R.drawable.fit_ikon),
-            contentDescription = "Fit",
-            modifier = Modifier.size(30.dp),
-            tint = Color.Black
-        )
-
-        // Kurv er aktiv side, derfor får den en lys cirkel bag sig
-        Box(
-            modifier = Modifier
-                .size(42.dp)
-                .background(LightCircle, CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.ShoppingCart,
-                contentDescription = "Kurv",
-                modifier = Modifier.size(29.dp),
-                tint = Color.Black
-            )
-        }
-
-        Icon(
-            imageVector = Icons.Outlined.Person,
-            contentDescription = "Profil",
-            modifier = Modifier.size(31.dp),
-            tint = Color.Black
-        )
-    }
-}
 
 // Preview bruges kun i Android Studio til at se designet af KurvScreen,
 // uden at vi behøver at sætte skærmen ind i MainActivity endnu.
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun KurvScreenPreview() {
-    KurvScreen()
+    KurvScreen(navController = rememberNavController())
 }

@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.components.PaymentOption
 import com.example.neveranother.components.SummaryRow
+import com.example.neveranother.navigation.BottomNavigationBar
 
 @Composable
 fun PaymentScreen(

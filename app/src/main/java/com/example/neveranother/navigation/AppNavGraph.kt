@@ -21,6 +21,7 @@ fun AppNavGraph(){
             HomeScreen(
                 onReadMoreClick = {},
                 onCreateBraClick = {navController.navigate("home2")},
+
             ) }
         composable("home2"){
             ChooseBraScreen(
@@ -59,7 +60,7 @@ fun AppNavGraph(){
 
 
         //Kurv / Checkout
-        composable("Kurv") {KurvScreen()}
+        composable("Kurv") {KurvScreen(navController = navController)}
         composable("Kurv"){
             InputField(
                 label = "",

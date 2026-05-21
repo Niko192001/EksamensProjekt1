@@ -16,9 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.components.TimelineStep
+import com.example.neveranother.navigation.BottomNavigationBar
 import com.example.neveranother.screens.Burgundy
 import com.example.neveranother.screens.BackgroundColor
-import com.example.neveranother.screens.BottomNavigationBar
+
 import java.sql.Time
 
 @Composable
