@@ -37,16 +37,16 @@ fun BraProductCard(
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.Start
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Image(
                 painter = painterResource(id = imageRes),
                 contentDescription = title,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp),
-                contentScale = ContentScale.Crop
+                    .size(140.dp)
+                    .align(Alignment.CenterHorizontally),
+                contentScale = ContentScale.Fit
             )
 
             Spacer(modifier = Modifier.height(8.dp))
