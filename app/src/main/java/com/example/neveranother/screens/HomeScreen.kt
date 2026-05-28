@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -88,11 +89,17 @@ fun HomeScreen(
             //Header
             Text(
                 text = "Din krop er unik!\nSkal din BH ikke også være det?",
+            Spacer(modifier = Modifier.height(20.dp))
+
+            //Header
+            Text(
+                text = "Din krop er unik! \n Skal din BH ikke også være det?",
                 style = MaterialTheme.typography.headlineMedium,
                 color = Color.White,
                 textAlign = TextAlign.Left
             )
             Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             Text(
                 text = "En skræddersyet bh til din krop og dine behov",
@@ -108,6 +115,17 @@ fun HomeScreen(
 
             //Knapper
 
+            Button(
+                onClick = onReadMoreClick,
+                modifier = Modifier
+                    .width(180.dp)
+                    .align(Alignment.Start),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF6A1B1A) // Mørk rød farve som vores prototype
+                )
+            ) {
+                Text("LÆS MERE")
+            }
 
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -135,6 +153,7 @@ fun HomeScreen(
                 )
             ) {
                 Text("OM OS", color = Color.White)
+                Text("MÅL OP TIL DIN BH")
             }
 
         }
@@ -157,7 +176,7 @@ fun HomeScreen(
 HomeScreen er en composable, der viser forsiden af appen og tager to callbacks: én til Læs mere og én til Lav din BH.
 2. Hele layoutet ligger i en Box, så vi kan placere bundmenuen fast nederst.
 3. Indholdet ligger i en Column, som scroller, så alt kan ses på små skærme.
-4. Øverst viser vi “NEVER ANOTHER” som brand‑header.
+4. Øverst viser vi NEVER ANOTHER som brand‑header.
 5. Derefter kommer tre tekstsektioner, som introducerer konceptet og skaber en personlig tone.
 6. Under teksten vises et billede af en model, som fylder hele bredden og giver visuelt fokus.
 7. Efter billedet kommer to knapper, som er mindre og placeret til venstre for at matche designet.
