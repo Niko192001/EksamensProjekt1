@@ -15,15 +15,20 @@ import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.neveranother.components.TimelineStep
 import com.example.neveranother.navigation.BottomNavigationBar
 import com.example.neveranother.screens.Burgundy
 import com.example.neveranother.screens.BackgroundColor
 
 import java.sql.Time
-
+// Nikolaj
 @Composable
-fun OrderStatusScreen() {
+fun OrderStatusScreen(
+    navController: NavController,
+
+
+    ) {
 
     Box(
         modifier = Modifier
@@ -40,6 +45,7 @@ fun OrderStatusScreen() {
             //Titel
             Text(
                 text = "Profil",
+                color = Color.Black,
                 fontSize = 14.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
@@ -111,9 +117,20 @@ fun OrderStatusScreen() {
         }
 
         BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
+
+            modifier = Modifier.align(Alignment.BottomCenter),
+
+
+            onHomeClick = { navController.navigate("home") },
+            onFitClick = { navController.navigate("Fit") },
+            onCartClick = { navController.navigate("Kurv") },
+            onProfileClick = { navController.navigate("profile") }
+
+
         )
     }
+
+
 }
 
 /*

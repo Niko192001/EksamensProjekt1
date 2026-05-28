@@ -1,6 +1,9 @@
 package com.example.neveranother.screens
 
+import android.R.attr.top
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,60 +32,89 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.neveranother.R
+import com.example.neveranother.components.VideoBackground
 import com.example.neveranother.navigation.BottomNavigationBar
 import com.example.neveranother.ui.theme.NeverAnotherTheme
-
+// nikolaj
 @Composable
 fun HomeScreen(
+    navController: NavController,
     onReadMoreClick: () -> Unit,
     onCreateBraClick: () -> Unit
+
 ) {
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     Box(modifier = Modifier.fillMaxSize()) {
+
+
+        VideoBackground(videoRes = R.raw.home_video)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.2f))
+
+
+        )
+
         Column(
 
             modifier = Modifier
                 .fillMaxSize()
+
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp),
+
+
+                .padding(start = 16.dp, end = 16.dp),
+
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "NEVER ANOTHER",
-                fontSize = 28.sp,
-                color = Color.Black,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+
+        )
+
+
+        {
+            Image(
+                painter = painterResource(id = R.drawable.logo_png),
+                contentDescription = "Model med BH",
+                modifier = Modifier
+                    .fillMaxWidth()
+
+                    .height(150.dp),
+                contentScale = ContentScale.FillWidth
             )
+
+            //Header
+            Text(
+                text = "Din krop er unik!\nSkal din BH ikke også være det?",
             Spacer(modifier = Modifier.height(20.dp))
 
             //Header
             Text(
                 text = "Din krop er unik! \n Skal din BH ikke også være det?",
                 style = MaterialTheme.typography.headlineMedium,
-                textAlign = TextAlign.Center
+                color = Color.White,
+                textAlign = TextAlign.Left
             )
+            Spacer(modifier = Modifier.height(12.dp))
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
                 text = "En skræddersyet bh til din krop og dine behov",
                 style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center
+                color = Color.White,
+                textAlign = TextAlign.Left
+
             )
 
             //Billede
-            Image(
-                painter = painterResource(id = R.drawable.home_bra_model),
-                contentDescription = "Model med BH",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(280.dp),
-                contentScale = ContentScale.Fit
-            )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(70.dp))
 
             //Knapper
+
             Button(
                 onClick = onReadMoreClick,
                 modifier = Modifier
@@ -100,6 +132,7 @@ fun HomeScreen(
             Button(
                 onClick = onCreateBraClick,
                 modifier = Modifier
+
                     .width(180.dp)
                     .align(Alignment.Start),
                 colors = ButtonDefaults.buttonColors(
@@ -107,14 +140,34 @@ fun HomeScreen(
                 )
             )
             {
+                Text("MÅL OP TIL DIN BH", color = Color.White)
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = onReadMoreClick,
+                modifier = Modifier
+                    .width(180.dp)
+                    .align(Alignment.Start),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF6A1B1A) // Mørk rød farve som vores prototype
+                )
+            ) {
+                Text("OM OS", color = Color.White)
                 Text("MÅL OP TIL DIN BH")
             }
-            Spacer(modifier = Modifier.height(32.dp))
-
 
         }
         BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
+
+            modifier = Modifier.align(Alignment.BottomCenter),
+            currentRoute = currentRoute,
+
+            onHomeClick = { navController.navigate("home") },
+            onFitClick = { navController.navigate("Fit") },
+            onCartClick = { navController.navigate("Kurv") },
+            onProfileClick = { navController.navigate("profile") }
+
+
         )
     }
 }
@@ -137,6 +190,7 @@ HomeScreen er en composable, der viser forsiden af appen og tager to callbacks: 
 fun HomeScreenPreview() {
     NeverAnotherTheme {
         HomeScreen(
+            navController = rememberNavController(),
             onReadMoreClick = {},
             onCreateBraClick = {}
         )

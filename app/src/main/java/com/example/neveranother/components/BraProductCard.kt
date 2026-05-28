@@ -3,10 +3,12 @@ package com.example.neveranother.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -22,7 +24,13 @@ fun BraProductCard(
 ) {
     Button(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().shadow(
+            elevation = 10.dp,
+            shape = RoundedCornerShape(20.dp)
+        ),
+
+        shape = RoundedCornerShape(20.dp),
+
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.White
         )

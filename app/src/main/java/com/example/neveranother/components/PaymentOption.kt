@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.screens.Burgundy
@@ -20,6 +22,7 @@ import com.example.neveranother.screens.Burgundy
 fun PaymentOption(
     title: String,
     isSelected: Boolean,
+    iconRes: Int,
     onClick: () -> Unit
 ){
     Box(
@@ -39,11 +42,19 @@ fun PaymentOption(
             .padding(horizontal = 16.dp),
         contentAlignment = Alignment.CenterStart
     ){
-        Text(
-            text = "title",
-            fontSize = 16.sp,
-            color = Color.Black
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = painterResource(id = iconRes),
+                contentDescription = title,
+                modifier = Modifier.size(50.dp)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(
+                text = title,
+                fontSize = 16.sp,
+                color = Color.Black
+            )
+        }
     }
     Spacer(modifier = Modifier.height(12.dp))
 }

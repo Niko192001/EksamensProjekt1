@@ -1,195 +1,152 @@
 package com.example.neveranother.screens
-import com.example.neveranother.navigation.BottomNavigationBar
+
+import androidx.compose.foundation.background
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CalendarToday
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.example.neveranother.navigation.BottomNavigationBar
+
+
+
 import com.example.neveranother.R
 
 // Baggrundsfarven
 val BackgroundColor = Color(0xFFFAF5F2)
 
 // Mørkerød farve
-val Burgundy = Color(0xFFF3F3F3)
+val Burgundy = Color(0xFF6A1B1A)
 
 // Lys cirkelfarve til den aktive side i bundmenuen
 val LightCircle = Color(0xFFEFDFD5)
 
-
+//Beyza
 @Composable
 fun KurvScreen(navController: NavController) {
+    var fornavn by remember { mutableStateOf("") }
+    var efternavn by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var telefon by remember { mutableStateOf("") }
+    var fodselsdato by remember { mutableStateOf("") }
+    var adresse by remember { mutableStateOf("") }
+    var postnummer by remember { mutableStateOf("") }
+    var by by remember { mutableStateOf("") }
+    var land by remember { mutableStateOf("") }
 
-    // Box bruges som den store container for hele siden.
-    // Den gør det nemt at placere indhold, knap og bundnavigation oven på hinanden.
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundColor)
     ) {
-
-        // Denne Column indeholder alt det indhold, som skal kunne scrolles.
         Column(
             modifier = Modifier
                 .fillMaxSize()
-
-                // Denne linje gør siden scrollbar.
                 .verticalScroll(rememberScrollState())
-
-                // Luft fra venstre og højre side
                 .padding(horizontal = 24.dp)
-
-                // Luft fra toppen
                 .padding(top = 32.dp)
-
-                // Der tilføjes ekstra padding nederst,
-                // så de nederste inputfelter ikke bliver dækket af Fortsæt-knappen og bundnavigationen.
                 .padding(bottom = 170.dp)
         ) {
-
-            // Titel øverst på siden
             Text(
                 text = "KURV",
+                color = Color.Black,
                 fontSize = 14.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Første step: Dine oplysninger
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
-
-                // Mørkerød cirkel med tallet 1
                 Box(
                     modifier = Modifier
                         .size(22.dp)
                         .background(Burgundy, CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "1",
-                        color = Color.White,
-                        fontSize = 13.sp
-                    )
+                    Text(text = "1", color = Color.White, fontSize = 13.sp)
                 }
-
                 Spacer(modifier = Modifier.width(8.dp))
-
-                Text(
-                    text = "Dine oplysninger",
-                    fontSize = 20.sp,
-                    color = Color.Black
-                )
+                Text(text = "Dine oplysninger", fontSize = 20.sp, color = Color.Black)
             }
-
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Der laves en progress-indikator med prikker og linjer,
-            // så brugeren kan se, hvor langt de er i købsprocessen.
+
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 72.dp),
+                    .align(Alignment.CenterHorizontally),       // ← centrér i Column
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
-                // Første punkt er aktivt
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(Burgundy, CircleShape)
-                )
-
+                ProgressDot(isActive = true)
                 ProgressLine()
-
-                // Punkt 2
-                EmptyProgressDot()
-
+                ProgressDot(isActive = false)
                 ProgressLine()
-
-                // Punkt 3
-                EmptyProgressDot()
-
+                ProgressDot(isActive = false)
                 ProgressLine()
-
-                // Punkt 4
-                EmptyProgressDot()
+                ProgressDot(isActive = false)
             }
-
             Spacer(modifier = Modifier.height(28.dp))
 
-            // Inputfelter
-            InputField(
-                label = "Fornavn",
-                value = "Emma"
+            OutlinedTextField(
+                value = fornavn,
+                onValueChange = { fornavn = it },
+                label = { Text("Fornavn") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "Efternavn",
-                value = "Andersen"
+            OutlinedTextField(
+                value = efternavn,
+                onValueChange = { efternavn = it },
+                label = { Text("Efternavn") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "E-mail",
-                value = "emma.andersen@hotmail.com"
+            OutlinedTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = { Text("E-mail") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "Telefonnummer",
-                value = "+45 12 34 56 78"
+            OutlinedTextField(
+                value = telefon,
+                onValueChange = { if (it.all { c -> c.isDigit() }) telefon = it },
+                label = { Text("Telefonnummer") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "Fødselsdato",
-                value = "12/05-2000",
-                showCalendarIcon = true
+            OutlinedTextField(
+                value = fodselsdato,
+                onValueChange = { fodselsdato = it },
+                label = { Text("Fødselsdato") },
+                modifier = Modifier.fillMaxWidth()
             )
-
-            // Her laver vi ekstra indhold, så vi kan teste scroll.
-            // Senere kan vi erstatte dette med Levering, Pakkeshop, Adresse osv.
             Spacer(modifier = Modifier.height(40.dp))
 
             Text(
@@ -198,45 +155,43 @@ fun KurvScreen(navController: NavController) {
                 color = Color.Black,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "Adresse",
-                value = "Svanemøllevej 42 3.th"
+            OutlinedTextField(
+                value = adresse,
+                onValueChange = { adresse = it },
+                label = { Text("Adresse") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "Postnummer",
-                value = "2100"
+            OutlinedTextField(
+                value = postnummer,
+                onValueChange = { if (it.all { c -> c.isDigit() }) postnummer = it },
+                label = { Text("Postnummer") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "By",
-                value = "København Ø"
+            OutlinedTextField(
+                value = by,
+                onValueChange = { by = it },
+                label = { Text("By") },
+                modifier = Modifier.fillMaxWidth()
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            InputField(
-                label = "Land",
-                value = "Danmark"
+            OutlinedTextField(
+                value = land,
+                onValueChange = { land = it },
+                label = { Text("Land") },
+                modifier = Modifier.fillMaxWidth()
             )
         }
 
-        // Fortsæt-knappen ligger fast nederst.
-        // Den scroller ikke med siden.
         Button(
-            onClick = {
-                // Her kan vi senere skrive navigation til næste side
-            },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Burgundy
-            ),
+            onClick = { navController.navigate("Kurv3") },
+            colors = ButtonDefaults.buttonColors(containerColor = Burgundy),
             shape = RoundedCornerShape(14.dp),
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -245,173 +200,44 @@ fun KurvScreen(navController: NavController) {
                 .fillMaxWidth()
                 .height(50.dp)
         ) {
-            Text(
-                text = "Fortsæt",
-                fontSize = 22.sp,
-                color = Color.White
-            )
-
+            Text(text = "Fortsæt", fontSize = 22.sp, color = Color.White)
         }
 
-        // Bundnavigation ligger fast nederst.
         BottomNavigationBar(
             modifier = Modifier.align(Alignment.BottomCenter),
-            onHomeClick    = { navController.navigate("home") },
-            onFitClick     = { navController.navigate("Fit") },
-            onCartClick    = { navController.navigate("Kurv") },
+            onHomeClick = { navController.navigate("home") },
+            onFitClick = { navController.navigate("Fit") },
+            onCartClick = { navController.navigate("Kurv") },
             onProfileClick = { navController.navigate("profile") }
         )
     }
-
 }
 
-
-// Der laves en genbrugelig funktion, der hedder InputField.
-// Den gør, at vi ikke skal skrive det samme inputfelt igen og igen.
-// Vi kan bare kalde funktionen med forskellige labels og værdier.
-@Composable
-fun InputField(
-    label: String,
-    value: String,
-    showCalendarIcon: Boolean = false
-) {
-    Column {
-
-        // Label over inputfeltet
-        Text(
-            text = label,
-            fontSize = 14.sp,
-            color = Color.Black
-        )
-
-        Spacer(modifier = Modifier.height(7.dp))
-
-        // Selve inputboksen
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .shadow(
-                    elevation = 4.dp,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .background(
-                    color = Color.White,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .padding(horizontal = 16.dp),
-            contentAlignment = Alignment.CenterStart
-        ) {
-            Text(
-                text = value,
-                fontSize = 15.sp,
-                color = Color.Black
-            )
-
-            // Kalenderikon vises kun på fødselsdato-feltet
-            if (showCalendarIcon) {
-                Icon(
-                    imageVector = Icons.Outlined.CalendarToday,
-                    contentDescription = "Kalender",
-                    tint = Color.Black,
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd)
-                        .size(20.dp)
-                )
-            }
-        }
-    }
-}
-
-// Der laves en progress-indikator med prikker og linjer,
-// så brugeren kan se, hvor langt de er i købsprocessen.
 @Composable
 fun ProgressLine() {
     Box(
         modifier = Modifier
             .height(1.dp)
-            .width(45.dp)
+            .width(60.dp)
             .background(Burgundy)
     )
 }
 
-// EmptyProgressDot laver en tom cirkel i progress-indikatoren.
-// Den viser de trin, brugeren endnu ikke er nået til.
 @Composable
-fun EmptyProgressDot() {
+fun ProgressDot(isActive: Boolean) {
     Box(
         modifier = Modifier
-            .size(8.dp)
-            .background(BackgroundColor, CircleShape)
+            .size(10.dp)
+            .background(
+                if (isActive) Burgundy else BackgroundColor,
+                CircleShape
+            )
             .border(1.dp, Burgundy, CircleShape)
     )
 }
 
-// Bundnavigationen nederst
-
-// Preview bruges kun i Android Studio til at se designet af KurvScreen,
-// uden at vi behøver at sætte skærmen ind i MainActivity endnu.
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun KurvScreenPreview() {
     KurvScreen(navController = rememberNavController())
-}
-// BottomNavigationBar laver navigationen nederst i appen.
-// Den giver brugeren mulighed for at skifte mellem appens centrale sider.
-@Composable
-fun BottomNavigationBar(
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(55.dp)
-            .background(BackgroundColor)
-            .border(1.dp, Color.Black),
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-
-
-
-        // Vi bruger fit-ikon til Fit.
-        Icon(
-            imageVector = Icons.Outlined.Home,
-            contentDescription = "Fit",
-            modifier = Modifier.size(30.dp),
-            tint = Color.Black
-        )
-
-        // Der bruges painterResource til at hente et ikon fra drawable-mappen.
-        // Det bruger vi til Fit-ikonet.
-
-        Icon(
-            painter = painterResource(id = R.drawable.fit_ikon),
-            contentDescription = "Fit",
-            modifier = Modifier.size(30.dp),
-            tint = Color.Black
-        )
-
-        // Kurv er aktiv side, derfor får den en lys cirkel bag sig
-        Box(
-            modifier = Modifier
-                .size(42.dp)
-                .background(LightCircle, CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.ShoppingCart,
-                contentDescription = "Kurv",
-                modifier = Modifier.size(29.dp),
-                tint = Color.Black
-            )
-        }
-
-        Icon(
-            imageVector = Icons.Outlined.Person,
-            contentDescription = "Profil",
-            modifier = Modifier.size(31.dp),
-            tint = Color.Black
-        )
-    }
 }
