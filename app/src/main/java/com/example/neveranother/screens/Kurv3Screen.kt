@@ -1,6 +1,6 @@
 package com.example.neveranother.screens
 
-import android.widget.Button
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,17 +12,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.components.PaymentOption
 import com.example.neveranother.components.SummaryRow
 import com.example.neveranother.navigation.BottomNavigationBar
+import androidx.navigation.NavController
+import com.example.neveranother.R
 
+// Nikolaj
 @Composable
 fun PaymentScreen(
+    navController: NavController,
     onContinue: () -> Unit
+
 ) {
 
     var selectedMethod by remember { mutableStateOf("MobilePay") }
@@ -32,16 +39,19 @@ fun PaymentScreen(
             .fillMaxSize()
             .background(BackgroundColor)
     ) {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp)
                 .padding(top = 32.dp)
-                .padding(120.dp)
+                .padding(bottom = 170.dp)
         ) {
-            //Titel
+
+
             Text(
-                text = "Kurv 3",
+                text = "",
                 fontSize = 14.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
@@ -49,42 +59,50 @@ fun PaymentScreen(
 
             Text(
                 text = "Betaling",
+                color = Color.Black,
                 fontSize = 22.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(24.dp))
 
-            //Leveringsmetode
-            Text(text = "Vælg Leveringsmetode", fontSize = 16.sp)
+
+            Text(
+                text = "Vælg Leveringsmetode", fontSize = 16.sp,
+                color = Color.Black,
+            )
             Spacer(modifier = Modifier.height(12.dp))
 
             PaymentOption(
                 title = "MobilePay",
+                iconRes = R.drawable.mobilepay,
                 isSelected = selectedMethod == "MobilePay",
                 onClick = { selectedMethod = "MobilePay" }
             )
 
             PaymentOption(
                 title = "Dankort/Visa",
+                iconRes = R.drawable.danvisa,
                 isSelected = selectedMethod == "Visa",
                 onClick = { selectedMethod = "Visa" }
             )
 
             PaymentOption(
                 title = "Klarna",
+                iconRes = R.drawable.klarna,
                 isSelected = selectedMethod == "Klarna",
                 onClick = { selectedMethod = "Klarna" }
             )
 
             PaymentOption(
                 title = "Apple Pay",
+                iconRes = R.drawable.applepay,
                 isSelected = selectedMethod == "ApplePay",
                 onClick = { selectedMethod = "ApplePay" }
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            //Opsummering
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -101,7 +119,8 @@ fun PaymentScreen(
 
             //Betal knap
             Button(
-                onClick = {},
+                onClick = { navController.navigate("Kurv8") },
+
                 colors = ButtonDefaults.buttonColors(containerColor = Burgundy),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
@@ -112,7 +131,13 @@ fun PaymentScreen(
             }
         }
         BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier.align(Alignment.BottomCenter),
+            onHomeClick = { navController.navigate("home") },
+            onFitClick = { navController.navigate("Fit") },
+            onCartClick = { navController.navigate("Kurv") },
+            onProfileClick = {
+                navController.navigate("profile")
+            }
         )
 
 

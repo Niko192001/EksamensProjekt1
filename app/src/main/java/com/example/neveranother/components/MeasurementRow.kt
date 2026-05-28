@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -18,10 +19,13 @@ fun MeasurementRow(
     ) {
         Text(
             text = label,
+            color = Color.Black,
             style = MaterialTheme.typography.bodyMedium
+
         )
         Text(
             text = value,
+            color = Color.Black,
             style = MaterialTheme.typography.bodyMedium
         )
     }

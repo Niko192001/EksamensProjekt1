@@ -11,6 +11,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,7 +28,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+
 import androidx.compose.ui.unit.dp
 
 import androidx.compose.material3.Icon
@@ -41,42 +42,59 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.components.BottomNavBar
 import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialogDefaults.containerColor
 
-
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.neveranother.navigation.BackButton
 import com.example.neveranother.navigation.BottomNavigationBar
 
-
+// Ali
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FitScreen(
+    navController: NavController,
     onManuelClick: () -> Unit,
     on3dClick: () -> Unit,
 ) {
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
 
-
-// det er en måde at grupper det på ligesom at bruge fx box
+    // det er en måde at grupper det på ligesom at bruge fx box
     Scaffold(
+        containerColor = BackgroundColor,
         // det er en måde at lave en bar i toppen og have ting i toppe fx som back kanp
         topBar = {
+
             CenterAlignedTopAppBar(
-                title = { Text("FIT") },
-
+                title = { Text("FIT", color = Color.Black) },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "tilbage")
-                    }
+                    BackButton(navController = navController)
+                },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = BackgroundColor,
 
 
-                }
+                    ),
             )
         },
-        // til at have ting i bunden som nav bar
+
+
         bottomBar = {
+            Modifier
+                .background(BackgroundColor)
             BottomNavigationBar(
+                currentRoute = currentRoute,
+                onHomeClick = { navController.navigate("home") },
+                onFitClick = { navController.navigate("Fit") },
+                onCartClick = { navController.navigate("Kurv") },
+                onProfileClick = { navController.navigate("profile") }
+
 
             )
         }
@@ -87,26 +105,40 @@ fun FitScreen(
 
             modifier = Modifier
                 .padding(innerpadding)
+                .background(BackgroundColor)
                 .padding(horizontal = 24.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Find din perfekte pasform", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+            Text(
+                "Find din perfekte pasform",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 "For at finde den BH der passer bedst til dig, skal vi bruge dine mål.",
-                textAlign = TextAlign.Center
-            )
+                textAlign = TextAlign.Center,
+                color = Color.Black,
+
+                )
             Spacer(modifier = Modifier.height(24.dp))
-            Text("Hvordan vil du oplyse dine mål?", fontWeight = FontWeight.Bold)
+            Text(
+                "Hvordan vil du oplyse dine mål?",
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+            )
             Spacer(modifier = Modifier.height(70.dp))
-// de to bocxe
+            // de to bocxe
             OptionCard(
 
                 title = "Skriv dine mål ind",
                 description = "Indtast dine mål manuelt, så vi kan finde den bedste pasform til dig.",
                 onClick = onManuelClick,
+
                 imageRes = R.drawable.fit_ikon,
+
 
                 )
             Spacer(modifier = Modifier.height(50.dp))
@@ -124,14 +156,15 @@ fun FitScreen(
     }
 
 
-
 }
+
 // her er functione  til de to boxe
 @Composable
 fun OptionCard(title: String, description: String, imageRes: Int, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+
             .shadow(80.dp)
             .clickable { onClick() },
         shape = RoundedCornerShape(12.dp),
@@ -158,19 +191,21 @@ fun OptionCard(title: String, description: String, imageRes: Int, onClick: () ->
                     .shadow(500.dp)
             )
             Column {
-                Text(title, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Text(description, fontSize = 13.sp)
+                Text(title, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.Black)
+                Text(description, fontSize = 13.sp, color = Color.Black)
 
             }
         }
     }
 }
+
 // det der gør vi ka se den i preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun FitScreenPreview() {
     FitScreen(
+        navController = rememberNavController(),
         onManuelClick = {},
         on3dClick = {}
     )

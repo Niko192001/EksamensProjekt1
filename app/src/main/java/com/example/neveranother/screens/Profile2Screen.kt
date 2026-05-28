@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.R
-
+//Amira
 @Composable
 fun Profile2Screen(
     onBackClick: () -> Unit,
@@ -56,7 +56,9 @@ fun Profile2Screen(
         //Titel øverst
         Text(
             text = "PROFIL",
-            fontSize = 16.sp
+            fontSize = 16.sp,
+            color = Color.Black
+
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -113,7 +115,6 @@ fun Profile2Screen(
         Spacer(modifier = Modifier.weight(1f))
 
 
-
         // Opdatere mål knappen
         Button(
 
@@ -134,6 +135,9 @@ fun Profile2Screen(
             )
         }
 
+
         Spacer(modifier = Modifier.height(16.dp))
+
+
     }
 }

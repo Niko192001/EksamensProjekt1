@@ -17,19 +17,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.neveranother.ui.theme.NeverAnotherTheme
 import com.example.neveranother.components.ProgressStep
 import com.example.neveranother.components.SummaryRow
 import com.example.neveranother.navigation.BottomNavigationBar
-
+//Nikolaj
 @Composable
-fun OrderConfirmedScreen() {
+fun OrderConfirmedScreen(
+    navController: NavController
+) {
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundColor)
-    ) {
+    )
+
+    {
+        val currentRoute =
+            navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
+
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -40,6 +50,7 @@ fun OrderConfirmedScreen() {
             // Titel
             Text(
                 text = "Ordre bekræftet",
+                color = Color.Black,
                 fontSize = 22.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
@@ -51,10 +62,14 @@ fun OrderConfirmedScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                ProgressStep(isActive = true)
-                ProgressStep(isActive = true)
-                ProgressStep(isActive = true)
-                ProgressStep(isActive = true)
+                ProgressDot(isActive = true)
+                ProgressLine()
+                ProgressDot(isActive = true)
+                ProgressLine()
+                ProgressDot(isActive = true)
+                ProgressLine()
+                ProgressDot(isActive = true)
+
             }
             Spacer(modifier = Modifier.height(40.dp))
 
@@ -84,13 +99,14 @@ fun OrderConfirmedScreen() {
 
             Text(
                 text = "Tak for din ordre!",
+                color = Color.Black,
                 fontSize = 26.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "Vi har modtaget din ordre og er igang med at pakke den",
+                text = "Vi har modtaget din ordre og er igang med at pakke den.",
                 fontSize = 15.sp,
                 color = Color.DarkGray,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -113,7 +129,7 @@ fun OrderConfirmedScreen() {
 
             //Knapper
             Button(
-                onClick = {},
+                onClick = { navController.navigate("home2") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
@@ -126,8 +142,14 @@ fun OrderConfirmedScreen() {
             }
         }
         BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
+            currentRoute = currentRoute,
+            modifier = Modifier.align(Alignment.BottomCenter),
+            onHomeClick = { navController.navigate("home") },
+            onFitClick = { navController.navigate("Fit") },
+            onCartClick = { navController.navigate("Kurv") },
+            onProfileClick = { navController.navigate("profile") }
         )
+
     }
 }
 
@@ -135,7 +157,8 @@ fun OrderConfirmedScreen() {
 @Composable
 fun OrderConfirmedScreenPreview() {
     NeverAnotherTheme {
-        OrderConfirmedScreen()
+
+
     }
 }
 

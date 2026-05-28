@@ -30,16 +30,18 @@ import com.example.neveranother.screens.LightCircle
 fun BottomNavigationBar(
     modifier: Modifier = Modifier,
 
-    onHomeClick: () -> Unit={},
-    onFitClick: () -> Unit={},
-    onCartClick: () -> Unit={},
-    onProfileClick: ()-> Unit={},
+    currentRoute: String = "",
 
+    onHomeClick: () -> Unit = {},
+    onFitClick: () -> Unit = {},
+    onCartClick: () -> Unit = {},
+    onProfileClick: () -> Unit = {},
 
 
     ) {
     Row(
         modifier = modifier
+
             .fillMaxWidth()
             .height(55.dp)
             .background(BackgroundColor)
@@ -49,48 +51,88 @@ fun BottomNavigationBar(
     ) {
 
 
-        // Midlertidigt bruger vi Home-ikon til Fit.
-        // Senere kan vi skifte det ud med vores eget målebåndsikon.
-        Icon(
-            imageVector = Icons.Outlined.Home,
-            contentDescription = "Fit",
-            modifier = Modifier.size(30.dp)
-            .clickable { onHomeClick() },
-            tint = Color.Black
 
-        )
-        Icon(
-            painter = painterResource(id = R.drawable.fit_ikon),
-            contentDescription = "Fit",
-            modifier = Modifier.size(30.dp)
-                .clickable { onFitClick() },
-
-            tint = Color.Black
-        )
-
-        // Kurv er aktiv side, derfor får den en lys cirkel bag sig
         Box(
             modifier = Modifier
                 .size(42.dp)
-                .background(LightCircle, CircleShape),
+                .then(
+                    if (currentRoute == "home") Modifier.background(LightCircle, CircleShape)
+                    else Modifier
+                )
+                .clickable { onHomeClick() },
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Home,
+                contentDescription = "Hjem",
+                modifier = Modifier.size(30.dp),
+                tint = Color.Black
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .size(42.dp)
+                .then(
+                    if (currentRoute == "Fit") Modifier.background(LightCircle, CircleShape)
+                    else Modifier
+                )
+                .clickable { onFitClick() },
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.fit_ikon),
+                contentDescription = "Fit",
+                modifier = Modifier.size(30.dp),
+                tint = Color.Black
+            )
+        }
+
+
+
+
+
+        Box(
+            modifier = Modifier
+                .size(42.dp)
+                .then(
+                    if (currentRoute == "Kurv") Modifier.background(LightCircle, CircleShape)
+                    else Modifier
+                )
+                .clickable { onCartClick() },
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = Icons.Outlined.ShoppingCart,
                 contentDescription = "Kurv",
-                modifier = Modifier.size(29.dp)
+                modifier = Modifier
+                    .size(29.dp)
                     .clickable { onCartClick() },
                 tint = Color.Black
             )
         }
 
-        Icon(
-            imageVector = Icons.Outlined.Person,
-            contentDescription = "Profil",
-            modifier = Modifier.size(31.dp)
+        Box(
+            modifier = Modifier
+                .size(42.dp)
+                .then(
+                    if (currentRoute == "profile") Modifier.background(LightCircle, CircleShape)
+                    else Modifier
+                )
+                .clickable { onProfileClick() },
+            contentAlignment = Alignment.Center
+
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Person,
+                contentDescription = "profile",
+                modifier = Modifier
+                    .size(31.dp)
                     .clickable { onProfileClick() },
 
-            tint = Color.Black
-        )
+                tint = Color.Black
+            )
+        }
     }
 }
+
