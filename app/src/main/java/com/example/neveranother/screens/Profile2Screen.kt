@@ -141,3 +141,15 @@ fun Profile2Screen(
 
     }
 }
+
+
+
+// koden laver en anden profilside i Jetpack Compose. Column bruges til at
+// placere alt indhold lodret på siden, mens Row bruges til tilbage-pilen øverst.
+// Modifier styrer layoutet, fx størrelse, padding og baggrundsfarve.
+//Tilbage-pilen laves med IconButton og Icon, hvor Icons.Outlined.ArrowBack
+// er et indbygget ikon fra Compose. Fluebenet i midten laves med Box, som bruges til at
+// centrere teksten inde i cirklen.
+//Billedet vises med Image, hvor painterResource henter billedet fra
+// drawable-mappen. Nederst bruges en Button til “OPDATERE MINE MÅL”.
+// Når brugeren klikker på knappen, kører lambda-funktionen onStartScan.

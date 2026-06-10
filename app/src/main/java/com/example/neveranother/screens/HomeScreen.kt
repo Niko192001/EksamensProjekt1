@@ -1,5 +1,6 @@
 package com.example.neveranother.screens
 
+import android.R.attr.text
 import android.R.attr.top
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.foundation.Image
@@ -87,8 +88,6 @@ fun HomeScreen(
             )
 
             //Header
-            Text(
-                text = "Din krop er unik!\nSkal din BH ikke også være det?",
             Spacer(modifier = Modifier.height(20.dp))
 
             //Header
@@ -111,21 +110,7 @@ fun HomeScreen(
 
             //Billede
 
-            Spacer(modifier = Modifier.height(70.dp))
 
-            //Knapper
-
-            Button(
-                onClick = onReadMoreClick,
-                modifier = Modifier
-                    .width(180.dp)
-                    .align(Alignment.Start),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF6A1B1A) // Mørk rød farve som vores prototype
-                )
-            ) {
-                Text("LÆS MERE")
-            }
 
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -153,7 +138,7 @@ fun HomeScreen(
                 )
             ) {
                 Text("OM OS", color = Color.White)
-                Text("MÅL OP TIL DIN BH")
+
             }
 
         }

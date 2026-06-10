@@ -2,6 +2,7 @@ package com.example.neveranother.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -41,7 +42,7 @@ fun AppNavGraph(){
             )
         }
         composable("Fit2"){
-            FitVideoGuideScreen(
+            FitVideoGuScreen(
                 navController=navController,
                 onUpperClick = {},
                 onLowerClick = {},
@@ -103,6 +104,18 @@ fun AppNavGraph(){
 
     }
 
+}
+
+@Composable
+fun FitVideoGuScreen(
+    navController: NavHostController,
+    onUpperClick: () -> Unit,
+    onLowerClick: () -> Unit,
+    onSpanClick: () -> Unit,
+    onHeightClick: () -> Unit,
+    onContinueClick: () -> Unit
+) {
+    TODO("Not yet implemented")
 }
 
 @Preview(showBackground = true)

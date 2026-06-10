@@ -20,7 +20,7 @@ import com.example.neveranother.navigation.BottomNavigationBar
 @Composable
 fun ProfileScreen(
     navController: NavController,
-    // Lambda-funktioner som bruges når brugeren klikker (husk til eksamen)
+    // Lambda-funktioner som bruges når brugeren klikker (husk til eksamen) parametrer
     onMeasurementsClick: () -> Unit,
     onOrderStatusClick: () -> Unit,
     onSettingsClick: () -> Unit
@@ -272,3 +272,12 @@ fun ProfileMenuItem(
     }
 }
 
+
+
+//Koden laver en profilside i Jetpack Compose ved hjælp af composables som Column,
+// Row, Box, Text og Button. Column bruges til at placere elementer lodret, mens Row placerer
+// elementer vandret. Modifier bruges til at styre layout, fx størrelse, padding og baggrundsfarve.
+//Profilcirklen laves med Box, hvor teksten “EA” centreres inde i cirklen.
+// Knappen “SE MINE MÅL” bruger en lambda-funktion (onMeasurementsClick),
+// som kører når brugeren klikker. ProfileMenuItem er et genbrugeligt composable til menu-punkterne
+// som “ORDRE STATUS” og “INDSTILLINGER”.
