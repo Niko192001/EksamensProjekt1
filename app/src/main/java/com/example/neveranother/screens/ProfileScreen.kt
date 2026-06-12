@@ -20,7 +20,6 @@ import com.example.neveranother.navigation.BottomNavigationBar
 @Composable
 fun ProfileScreen(
     navController: NavController,
-    // Lambda-funktioner som bruges når brugeren klikker (husk til eksamen) parametrer
     onMeasurementsClick: () -> Unit,
     onOrderStatusClick: () -> Unit,
     onSettingsClick: () -> Unit
