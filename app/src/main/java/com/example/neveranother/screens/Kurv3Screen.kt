@@ -18,6 +18,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.neveranother.ui.theme.NeverAnotherTheme
 import com.example.neveranother.components.PaymentOption
 import com.example.neveranother.components.SummaryRow
 import com.example.neveranother.navigation.BottomNavigationBar
@@ -110,7 +112,7 @@ fun PaymentScreen(
                     .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp))
                     .padding(20.dp)
             ) {
-                SummaryRow("The Everday Bra", "799 Kr")
+                SummaryRow("The Everyday Bra", "799 Kr")
                 SummaryRow("Levering", "39 kr")
                 SummaryRow("I alt", "838 DKK")
             }

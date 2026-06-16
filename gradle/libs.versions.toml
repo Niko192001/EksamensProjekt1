@@ -7,7 +7,12 @@ activityCompose = "1.9.0"
 composeBom = "2024.10.00"
 navigationCompose = "2.7.0"
 material3 = "1.2.1"
+benchmarkTraceprocessor = "1.4.1"
 material3Version = "1.4.0"
+datastoreCore = "1.2.1"
+foundationLayout = "1.11.2"
+ui = "1.11.2"
+uiGraphics = "1.11.2"
 
 [plugins]
 android-application = { id = "com.android.application", version = "8.7.3" }
@@ -31,4 +36,9 @@ androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-benchmark-traceprocessor = { group = "androidx.benchmark", name = "benchmark-traceprocessor", version.ref = "benchmarkTraceprocessor" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3Version" }
+androidx-datastore-core = { group = "androidx.datastore", name = "datastore-core", version.ref = "datastoreCore" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "uiGraphics" }

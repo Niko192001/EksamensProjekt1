@@ -79,7 +79,7 @@ fun HomeScreen(
         {
             Image(
                 painter = painterResource(id = R.drawable.logo_png),
-                contentDescription = "Model med BH",
+                contentDescription = "Never Another Logo",
                 modifier = Modifier
                     .fillMaxWidth()
 
@@ -87,7 +87,7 @@ fun HomeScreen(
                 contentScale = ContentScale.FillWidth
             )
 
-            //Header
+
             Spacer(modifier = Modifier.height(20.dp))
 
             //Header
@@ -107,10 +107,6 @@ fun HomeScreen(
                 textAlign = TextAlign.Left
 
             )
-
-            //Billede
-
-
 
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -169,16 +165,4 @@ HomeScreen er en composable, der viser forsiden af appen og tager to callbacks: 
 9. Der er Spacer() mellem elementerne for at skabe luft og bedre læsbarhed.
 10. Nederst i Box ligger BottomNavigationBar, så navigationen altid er synlig uanset scroll.
  */
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    NeverAnotherTheme {
-        HomeScreen(
-            navController = rememberNavController(),
-            onReadMoreClick = {},
-            onCreateBraClick = {}
-        )
-    }
-}
 

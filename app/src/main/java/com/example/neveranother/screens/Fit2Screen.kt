@@ -169,7 +169,11 @@ var upperValue by mutableStateOf("")
             onCartClick = { navController.navigate("Kurv") },
             onProfileClick = { navController.navigate("profile") }
         )
+        /*
+        Hvis selectedVideo ikke er null → koden inde i if‑blokken bliver kørt
 
+        • Hvis selectedVideo er null → koden bliver sprunget over
+         */
         if (selectedVideo != null) {
             VideoDialog(
                 videoRes = selectedVideo!!,

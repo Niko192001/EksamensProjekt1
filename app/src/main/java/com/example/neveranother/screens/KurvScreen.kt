@@ -43,7 +43,7 @@ val Burgundy = Color(0xFF6A1B1A)
 val LightCircle = Color(0xFFEFDFD5)
 
 //Beyza
-@Composable
+@Composable                 //Type eller Class
 fun KurvScreen(navController: NavController) {
     var fornavn by remember { mutableStateOf("") }
     var efternavn by remember { mutableStateOf("") }

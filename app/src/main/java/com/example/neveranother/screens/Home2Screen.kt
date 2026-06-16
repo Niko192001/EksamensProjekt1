@@ -65,7 +65,7 @@ fun ChooseBraScreen(
 
         Image(
             painter = painterResource(id = R.drawable.logo_png),
-            contentDescription = "Model med BH",
+            contentDescription = "Never Another Logo",
             modifier = Modifier
 
                 .fillMaxWidth()

@@ -42,7 +42,7 @@ fun AppNavGraph(){
             )
         }
         composable("Fit2"){
-            FitVideoGuScreen(
+            FitVideoGuideScreen(
                 navController=navController,
                 onUpperClick = {},
                 onLowerClick = {},
@@ -104,18 +104,6 @@ fun AppNavGraph(){
 
     }
 
-}
-
-@Composable
-fun FitVideoGuScreen(
-    navController: NavHostController,
-    onUpperClick: () -> Unit,
-    onLowerClick: () -> Unit,
-    onSpanClick: () -> Unit,
-    onHeightClick: () -> Unit,
-    onContinueClick: () -> Unit
-) {
-    TODO("Not yet implemented")
 }
 
 @Preview(showBackground = true)
