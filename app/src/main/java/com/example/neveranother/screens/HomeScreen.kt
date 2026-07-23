@@ -1,7 +1,6 @@
 package com.example.neveranother.screens
 
-import android.R.attr.text
-import android.R.attr.top
+
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

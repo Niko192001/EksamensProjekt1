@@ -1,34 +1,31 @@
 package com.example.neveranother.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.neveranother.components.TimelineStep
 import com.example.neveranother.navigation.BottomNavigationBar
-import com.example.neveranother.screens.Burgundy
-import com.example.neveranother.screens.BackgroundColor
+import com.example.neveranother.ui.theme.BackgroundColor
+import com.example.neveranother.ui.theme.Burgundy
 
-import java.sql.Time
+
 // Nikolaj
 @Composable
 fun OrderStatusScreen(
     navController: NavController,
-
-
     ) {
 
     Box(
@@ -38,6 +35,7 @@ fun OrderStatusScreen(
     ) {
         Column(
             modifier = Modifier
+                .verticalScroll(rememberScrollState())
                 .fillMaxSize()
                 .padding(horizontal = 24.dp)
                 .padding(top = 32.dp)
@@ -56,7 +54,7 @@ fun OrderStatusScreen(
             Box(
                 modifier = Modifier
                     .align(Alignment.End)
-                    .background(Color(0xFF6A2128), RoundedCornerShape(8.dp))
+                    .background(Burgundy, RoundedCornerShape(8.dp))
                     .padding(horizontal = 12.dp, vertical = 6.dp)
             ) {
                 Text(

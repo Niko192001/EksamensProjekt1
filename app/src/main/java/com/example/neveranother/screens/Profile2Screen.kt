@@ -21,18 +21,43 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.neveranother.R
+import com.example.neveranother.ui.theme.BackgroundColor
+import com.example.neveranother.ui.theme.Burgundy
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Scaffold
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.neveranother.navigation.BottomNavigationBar
+
 //Amira
 @Composable
 fun Profile2Screen(
+    navController: NavController,
     onBackClick: () -> Unit,
     onStartScan: () -> Unit
 ) {
+    // Den her linje viser man hvilken side man er på
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
 
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(
+                currentRoute = currentRoute,
+                onHomeClick = { navController.navigate("home") },
+                onFitClick = { navController.navigate("Fit") },
+                onCartClick = { navController.navigate("Kurv") },
+                onProfileClick = { navController.navigate("profile") }
+            )
+        }
+    ) { innerpadding ->
     // Column placerer elementer lodret under hinanden
     Column(
         modifier = Modifier
+            .padding(innerpadding)
             .fillMaxSize()
-            .background(Color(0xFFF8F2ED))
+            .background(BackgroundColor)
+            .verticalScroll(rememberScrollState())
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -69,7 +94,7 @@ fun Profile2Screen(
                 .size(100.dp)
                 .border(
                     width = 1.dp,
-                    color = Color(0xFF6A1B1A),
+                    color = Burgundy,
                     shape = CircleShape
                 )
                 .align(Alignment.CenterHorizontally),
@@ -126,7 +151,7 @@ fun Profile2Screen(
                 .height(52.dp),
 
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF6A1B1A),
+                containerColor = Burgundy,
                 contentColor = Color.White
             )
         ) {
@@ -141,15 +166,17 @@ fun Profile2Screen(
 
     }
 }
+}
 
 
-
-// koden laver en anden profilside i Jetpack Compose. Column bruges til at
-// placere alt indhold lodret på siden, mens Row bruges til tilbage-pilen øverst.
-// Modifier styrer layoutet, fx størrelse, padding og baggrundsfarve.
-//Tilbage-pilen laves med IconButton og Icon, hvor Icons.Outlined.ArrowBack
-// er et indbygget ikon fra Compose. Fluebenet i midten laves med Box, som bruges til at
-// centrere teksten inde i cirklen.
-//Billedet vises med Image, hvor painterResource henter billedet fra
-// drawable-mappen. Nederst bruges en Button til “OPDATERE MINE MÅL”.
-// Når brugeren klikker på knappen, kører lambda-funktionen onStartScan.
+/*
+ koden laver en anden profilside i Jetpack Compose. Column bruges til at
+ placere alt indhold lodret på siden, mens Row bruges til tilbage-pilen øverst.
+ Modifier styrer layoutet, fx størrelse, padding og baggrundsfarve.
+Tilbage-pilen laves med IconButton og Icon, hvor Icons.Outlined.ArrowBack
+ er et indbygget ikon fra Compose. Fluebenet i midten laves med Box, som bruges til at
+ centrere teksten inde i cirklen.
+Billedet vises med Image, hvor painterResource henter billedet fra
+ drawable-mappen. Nederst bruges en Button til “OPDATERE MINE MÅL”.
+  Når brugeren klikker på knappen, kører lambda-funktionen onStartScan.
+ */

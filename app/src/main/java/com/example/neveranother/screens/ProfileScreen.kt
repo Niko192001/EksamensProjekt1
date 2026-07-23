@@ -2,6 +2,7 @@ package com.example.neveranother.screens
 
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +17,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.neveranother.navigation.BottomNavigationBar
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import com.example.neveranother.ui.theme.BackgroundColor
+import com.example.neveranother.ui.theme.Burgundy
+
 //Amira
 @Composable
 fun ProfileScreen(
@@ -50,7 +56,9 @@ fun ProfileScreen(
                 .fillMaxSize()
 
                 // Baggrundsfarve
-                .background(Color(0xFFF8F2ED))
+                .background(BackgroundColor)
+                .verticalScroll(rememberScrollState())
+
 
                 // Padding rundt om indholdet
                 .padding(30.dp),
@@ -77,7 +85,7 @@ fun ProfileScreen(
 
                     // Baggrund og form
                     .background(
-                        Color(0xFF7A1F2B),
+                        Burgundy,
                         CircleShape
                     ),
 
@@ -146,7 +154,7 @@ fun ProfileScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Button er en klikbar knap
+
                 Button(
 
                     // Lambda-funktion der kører ved klik
@@ -162,7 +170,7 @@ fun ProfileScreen(
                     // Farver på knappen
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFFEFDFD5),
-                        contentColor = Color(0xFF7A1F2B)
+                        contentColor = Burgundy
                     )
 
                 ) {
@@ -208,7 +216,29 @@ fun ProfileScreen(
                 )
             }
 
+            Spacer(modifier = Modifier.height(50.dp)) // Giver luft over knappen
 
+            Button(
+                onClick = {
+                    // her ville man logge brugerne ud, men vi sender dem bare tilbage til home screen
+                    navController.navigate("home")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .border(1.dp, Burgundy, RoundedCornerShape(12.dp)),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                    contentColor = Burgundy
+                ),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(
+                    text = "LOG UD",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
+                )
+            }
         }
     }
 }
@@ -271,12 +301,12 @@ fun ProfileMenuItem(
     }
 }
 
-
-
-//Koden laver en profilside i Jetpack Compose ved hjælp af composables som Column,
-// Row, Box, Text og Button. Column bruges til at placere elementer lodret, mens Row placerer
-// elementer vandret. Modifier bruges til at styre layout, fx størrelse, padding og baggrundsfarve.
-// Profilcirklen laves med Box, hvor teksten “EA” centreres inde i cirklen.
-// Knappen “SE MINE MÅL” bruger en lambda-funktion (onMeasurementsClick),
-// som kører når brugeren klikker. ProfileMenuItem er et genbrugeligt composable til menu-punkterne
-// som “ORDRE STATUS” og “INDSTILLINGER”.
+/*
+Koden laver en profilside i Jetpack Compose ved hjælp af composables som Column,
+ Row, Box, Text og Button. Column bruges til at placere elementer lodret, mens Row placerer
+ elementer vandret. Modifier bruges til at styre layout, fx størrelse, padding og baggrundsfarve.
+ Profilcirklen laves med Box, hvor teksten “EA” centreres inde i cirklen.
+ Knappen “SE MINE MÅL” bruger en lambda-funktion (onMeasurementsClick),
+ som kører når brugeren klikker. ProfileMenuItem er et genbrugeligt composable til menu-punkterne
+ som “ORDRE STATUS” og “INDSTILLINGER”.
+*/

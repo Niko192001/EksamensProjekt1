@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.neveranother.ui.theme.BackgroundColor
 import com.example.neveranother.R
 import com.example.neveranother.navigation.BackButton
 import com.example.neveranother.navigation.BottomNavigationBar

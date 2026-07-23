@@ -52,23 +52,25 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.neveranother.ui.theme.BackgroundColor
 import com.example.neveranother.navigation.BackButton
 import com.example.neveranother.navigation.BottomNavigationBar
 
 // Ali
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FitScreen(
     navController: NavController,
     onManuelClick: () -> Unit,
-    on3dClick: () -> Unit,
+    on3dClick: () -> Unit
 ) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
 
     // det er en måde at grupper det på ligesom at bruge fx box
     Scaffold(
         containerColor = BackgroundColor,
-        // det er en måde at lave en bar i toppen og have ting i toppe fx som back kanp
+        // det er en måde at lave en bar i toppen og have ting i toppe fx som back knap
         topBar = {
 
             CenterAlignedTopAppBar(
@@ -99,7 +101,6 @@ fun FitScreen(
             )
         }
 
-
     ) { innerpadding ->
         Column(
 
@@ -110,6 +111,7 @@ fun FitScreen(
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Header
             Text(
                 "Find din perfekte pasform",
                 fontSize = 22.sp,
@@ -117,6 +119,7 @@ fun FitScreen(
                 color = Color.Black,
             )
             Spacer(modifier = Modifier.height(8.dp))
+            // Beskrivelse
             Text(
                 "For at finde den BH der passer bedst til dig, skal vi bruge dine mål.",
                 textAlign = TextAlign.Center,
@@ -130,18 +133,16 @@ fun FitScreen(
                 color = Color.Black,
             )
             Spacer(modifier = Modifier.height(70.dp))
-            // de to bocxe
+            // OptionCard 1
             OptionCard(
-
                 title = "Skriv dine mål ind",
                 description = "Indtast dine mål manuelt, så vi kan finde den bedste pasform til dig.",
                 onClick = onManuelClick,
-
                 imageRes = R.drawable.fit_ikon,
-
 
                 )
             Spacer(modifier = Modifier.height(50.dp))
+            // OptionCard 2
             OptionCard(
                 title = "Scan din krop",
                 description = "Brug vores scanning til at få dine mål præcist og hurtigt.",
@@ -158,7 +159,7 @@ fun FitScreen(
 
 }
 
-// her er functione  til de to boxe
+// Her er funktionerne
 @Composable
 fun OptionCard(title: String, description: String, imageRes: Int, onClick: () -> Unit) {
     Card(
@@ -169,7 +170,7 @@ fun OptionCard(title: String, description: String, imageRes: Int, onClick: () ->
             .clickable { onClick() },
         shape = RoundedCornerShape(12.dp),
 
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F0EC))
+        colors = CardDefaults.cardColors(containerColor = Color.White)
 
     ) {
         Row(modifier = Modifier.padding(40.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -179,6 +180,7 @@ fun OptionCard(title: String, description: String, imageRes: Int, onClick: () ->
                     .background(Color(0xFFE8DDD5), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
+                // Ikon
                 Image(
                     painter = painterResource(id = imageRes),
                     contentDescription = null,
@@ -190,6 +192,7 @@ fun OptionCard(title: String, description: String, imageRes: Int, onClick: () ->
                     .width(16.dp)
                     .shadow(500.dp)
             )
+            // Tekster
             Column {
                 Text(title, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.Black)
                 Text(description, fontSize = 13.sp, color = Color.Black)
@@ -210,3 +213,5 @@ fun FitScreenPreview() {
         on3dClick = {}
     )
 }
+
+

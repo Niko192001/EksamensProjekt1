@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.neveranother"
-    compileSdk = 36
+    compileSdk = 35
 
 
     defaultConfig {

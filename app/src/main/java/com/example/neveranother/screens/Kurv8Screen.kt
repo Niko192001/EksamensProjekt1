@@ -1,6 +1,5 @@
 package com.example.neveranother.screens
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -17,12 +16,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.neveranother.ui.theme.BackgroundColor
+import com.example.neveranother.ui.theme.Burgundy
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.neveranother.ui.theme.NeverAnotherTheme
 import com.example.neveranother.components.ProgressStep
 import com.example.neveranother.components.SummaryRow
 import com.example.neveranother.navigation.BottomNavigationBar
+
 //Nikolaj
 @Composable
 fun OrderConfirmedScreen(
@@ -74,12 +76,11 @@ fun OrderConfirmedScreen(
             Spacer(modifier = Modifier.height(40.dp))
 
             //Stor cirkel med checkmark
-
             Box(
                 modifier = Modifier
                     .size(100.dp)
                     .background(
-                        Color(0xFF6A1B1A),
+                        Burgundy,
                         CircleShape
                     )
                     .align(Alignment.CenterHorizontally),
@@ -149,15 +150,6 @@ fun OrderConfirmedScreen(
             onCartClick = { navController.navigate("Kurv") },
             onProfileClick = { navController.navigate("profile") }
         )
-
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OrderConfirmedScreenPreview() {
-    NeverAnotherTheme {
-
 
     }
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.neveranother.ui.theme.BackgroundColor
 import com.example.neveranother.R
 import com.example.neveranother.components.ScanInfoRow
 import com.example.neveranother.navigation.BackButton
@@ -34,11 +35,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-// Ali
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.neveranother.models.FitViewModel
+
+/**
+ * Fit3ScanScreen håndterer 3D scanningen (eller simulation af den) og opdaterer FitViewModel.
+ */
 @Composable
 fun Fit3ScanScreen(
     navController: NavController,
-    onStartScan: () -> Unit
+    onStartScan: () -> Unit,
+    viewModel: FitViewModel
 ) {
     var imageBitmap by remember { mutableStateOf<Bitmap?>(null) }
 

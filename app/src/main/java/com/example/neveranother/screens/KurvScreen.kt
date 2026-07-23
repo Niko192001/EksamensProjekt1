@@ -9,6 +9,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
@@ -17,10 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,30 +34,23 @@ import androidx.navigation.compose.rememberNavController
 import com.example.neveranother.navigation.BottomNavigationBar
 
 
-
 import com.example.neveranother.R
-
-// Baggrundsfarven
-val BackgroundColor = Color(0xFFFAF5F2)
-
-// Mørkerød farve
-val Burgundy = Color(0xFF6A1B1A)
-
-// Lys cirkelfarve til den aktive side i bundmenuen
-val LightCircle = Color(0xFFEFDFD5)
+import com.example.neveranother.ui.theme.BackgroundColor
+import com.example.neveranother.ui.theme.Burgundy
+import com.example.neveranother.ui.theme.LightCircle
 
 //Beyza
 @Composable                 //Type eller Class
 fun KurvScreen(navController: NavController) {
-    var fornavn by remember { mutableStateOf("") }
-    var efternavn by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var telefon by remember { mutableStateOf("") }
-    var fodselsdato by remember { mutableStateOf("") }
-    var adresse by remember { mutableStateOf("") }
-    var postnummer by remember { mutableStateOf("") }
-    var by by remember { mutableStateOf("") }
-    var land by remember { mutableStateOf("") }
+    var fornavn by rememberSaveable { mutableStateOf("") }
+    var efternavn by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+    var telefon by rememberSaveable { mutableStateOf("") }
+    var fødselsdato by rememberSaveable { mutableStateOf("") }
+    var adresse by rememberSaveable { mutableStateOf("") }
+    var postnummer by rememberSaveable { mutableStateOf("") }
+    var by by rememberSaveable { mutableStateOf("") }
+    var land by rememberSaveable { mutableStateOf("") }
 
     Box(
         modifier = Modifier
@@ -113,7 +110,8 @@ fun KurvScreen(navController: NavController) {
                 value = fornavn,
                 onValueChange = { fornavn = it },
                 label = { Text("Fornavn") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -121,7 +119,8 @@ fun KurvScreen(navController: NavController) {
                 value = efternavn,
                 onValueChange = { efternavn = it },
                 label = { Text("Efternavn") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -129,7 +128,11 @@ fun KurvScreen(navController: NavController) {
                 value = email,
                 onValueChange = { email = it },
                 label = { Text("E-mail") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next
+                )
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -137,15 +140,20 @@ fun KurvScreen(navController: NavController) {
                 value = telefon,
                 onValueChange = { if (it.all { c -> c.isDigit() }) telefon = it },
                 label = { Text("Telefonnummer") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Phone,
+                    imeAction = ImeAction.Next
+                )
             )
             Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedTextField(
-                value = fodselsdato,
-                onValueChange = { fodselsdato = it },
+                value = fødselsdato,
+                onValueChange = { fødselsdato = it },
                 label = { Text("Fødselsdato") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
             Spacer(modifier = Modifier.height(40.dp))
 
@@ -161,7 +169,8 @@ fun KurvScreen(navController: NavController) {
                 value = adresse,
                 onValueChange = { adresse = it },
                 label = { Text("Adresse") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -169,7 +178,11 @@ fun KurvScreen(navController: NavController) {
                 value = postnummer,
                 onValueChange = { if (it.all { c -> c.isDigit() }) postnummer = it },
                 label = { Text("Postnummer") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                )
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -177,7 +190,8 @@ fun KurvScreen(navController: NavController) {
                 value = by,
                 onValueChange = { by = it },
                 label = { Text("By") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -185,13 +199,21 @@ fun KurvScreen(navController: NavController) {
                 value = land,
                 onValueChange = { land = it },
                 label = { Text("Land") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
             )
         }
 
+        val isFormValid = fornavn.isNotBlank() && efternavn.isNotBlank() &&
+                email.contains("@") && adresse.isNotBlank()
+
         Button(
             onClick = { navController.navigate("Kurv3") },
-            colors = ButtonDefaults.buttonColors(containerColor = Burgundy),
+            enabled = isFormValid,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Burgundy,
+                disabledContainerColor = Color.Gray
+            ),
             shape = RoundedCornerShape(14.dp),
             modifier = Modifier
                 .align(Alignment.BottomCenter)

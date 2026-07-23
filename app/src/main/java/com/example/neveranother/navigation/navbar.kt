@@ -23,8 +23,8 @@ import androidx.compose.ui.graphics.ColorFilter.Companion.tint
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.neveranother.R
-import com.example.neveranother.screens.BackgroundColor
-import com.example.neveranother.screens.LightCircle
+import com.example.neveranother.ui.theme.BackgroundColor
+import com.example.neveranother.ui.theme.LightCircle
 
 @Composable
 fun BottomNavigationBar(

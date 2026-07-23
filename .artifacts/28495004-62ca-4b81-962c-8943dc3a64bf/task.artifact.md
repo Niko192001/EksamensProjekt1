@@ -1,0 +1,4 @@
+- [x] Share `FitViewModel` in `AppNavGraph.kt`
+- [x] Clean up `Fit4Screen.kt` and add comments
+- [x] Add comments to `AppNavGraph.kt`
+- [x] Verify changes
