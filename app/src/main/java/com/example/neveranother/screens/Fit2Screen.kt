@@ -66,12 +66,12 @@ fun FitVideoGuideScreen(
 
         OutlinedTextField(
             value = viewModel.upperValue,
-            onValueChange = { if (it.all { c -> c.isDigit() }) viewModel.upperValue = it },
+            onValueChange = { if (it.all { c -> c.isDigit() }) viewModel.upperValue = it},
             label = { Text("cm") },
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -90,7 +90,7 @@ fun FitVideoGuideScreen(
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -109,7 +109,7 @@ fun FitVideoGuideScreen(
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -128,7 +128,7 @@ fun FitVideoGuideScreen(
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
         )
 
         Spacer(modifier = Modifier.height(40.dp))

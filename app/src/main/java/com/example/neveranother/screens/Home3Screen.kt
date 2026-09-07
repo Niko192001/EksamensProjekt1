@@ -24,6 +24,7 @@ import com.example.neveranother.navigation.BackButton
 import com.example.neveranother.navigation.BottomNavigationBar
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.ui.graphics.ColorFilter
+
 // Nikolaj
 @Composable
 fun AboutUsScreen(navController: NavController) {
