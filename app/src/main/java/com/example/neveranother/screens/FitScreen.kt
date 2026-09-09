@@ -52,6 +52,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.neveranother.components.OptionCard
 import com.example.neveranother.ui.theme.BackgroundColor
 import com.example.neveranother.navigation.BackButton
 import com.example.neveranother.navigation.BottomNavigationBar
@@ -85,7 +86,6 @@ fun FitScreen(
                     ),
             )
         },
-
 
         bottomBar = {
             Modifier
@@ -155,63 +155,6 @@ fun FitScreen(
 
 
     }
-
-
-}
-
-// Her er funktionerne
-@Composable
-fun OptionCard(title: String, description: String, imageRes: Int, onClick: () -> Unit) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-
-            .shadow(80.dp)
-            .clickable { onClick() },
-        shape = RoundedCornerShape(12.dp),
-
-        colors = CardDefaults.cardColors(containerColor = Color.White)
-
-    ) {
-        Row(modifier = Modifier.padding(40.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(
-                modifier = Modifier
-                    .size(70.dp)
-                    .background(Color(0xFFE8DDD5), CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                // Ikon
-                Image(
-                    painter = painterResource(id = imageRes),
-                    contentDescription = null,
-                    modifier = Modifier.size(45.dp)
-                )
-            }
-            Spacer(
-                modifier = Modifier
-                    .width(16.dp)
-                    .shadow(500.dp)
-            )
-            // Tekster
-            Column {
-                Text(title, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.Black)
-                Text(description, fontSize = 13.sp, color = Color.Black)
-
-            }
-        }
-    }
-}
-
-// det der gør vi ka se den i preview
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview
-@Composable
-fun FitScreenPreview() {
-    FitScreen(
-        navController = rememberNavController(),
-        onManuelClick = {},
-        on3dClick = {}
-    )
 }
 
 

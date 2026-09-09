@@ -90,7 +90,8 @@ fun PaymentScreen(
                 title = "Dankort/Visa",
                 iconRes = R.drawable.danvisa,
                 isSelected = selectedMethod == "Visa",
-                onClick = { selectedMethod = "Visa" }
+                onClick = { selectedMethod = "Vis" +
+                        "a" }
             )
             PaymentOption(
                 title = "Klarna",
@@ -114,7 +115,7 @@ fun PaymentScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = "Sikkerhed",
+                    contentDescription = "sikkerhed",
                     tint = Color.Gray,
                     modifier = Modifier.size(16.dp)
                 )
