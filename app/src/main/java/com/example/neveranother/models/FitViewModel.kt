@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class FitViewModel : ViewModel() {
-
+                                //String type fordi der ""
     var upperValue by mutableStateOf("")
     var lowerValue by mutableStateOf("")
     var spanValue by mutableStateOf("")

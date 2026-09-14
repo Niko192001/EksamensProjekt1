@@ -67,7 +67,7 @@ fun FitVideoGuideScreen(
         OutlinedTextField(
             value = viewModel.upperValue,
             onValueChange = { if (it.all { c -> c.isDigit() }) viewModel.upperValue = it},
-            label = { Text("cm") },
+            label = { Text("Måles i cm") },
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
@@ -86,7 +86,7 @@ fun FitVideoGuideScreen(
         OutlinedTextField(
             value = viewModel.lowerValue,
             onValueChange = { if (it.all { c -> c.isDigit() }) viewModel.lowerValue = it },
-            label = { Text("cm") },
+            label = { Text("Måles i cm") },
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
@@ -105,7 +105,7 @@ fun FitVideoGuideScreen(
         OutlinedTextField(
             value = viewModel.spanValue,
             onValueChange = { if (it.all { c -> c.isDigit() }) viewModel.spanValue = it },
-            label = { Text("cm") },
+            label = { Text("Måles i cm") },
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
@@ -124,7 +124,7 @@ fun FitVideoGuideScreen(
         OutlinedTextField(
             value = viewModel.heightValue,
             onValueChange = { if (it.all { c -> c.isDigit() }) viewModel.heightValue = it },
-            label = { Text("cm") },
+            label = { Text("Måles i cm") },
             modifier = Modifier.width(210.dp),
             singleLine = true,
             shape = RoundedCornerShape(16.dp),
